@@ -1,12 +1,43 @@
 <!--header-->
 
 <?php 
+session_start();
 $pageTitle = "PHPMOBILE";
 $activeMenu = "home";
 $_SESSION['username']="LeTuan";
+
    include_once '../PRJ_Library/header.html';
    
 ?>    
+
+<!--phần tìm nhanh-->
+
+<!--<div class="gird-container">
+            <div class="row">
+                <div class="navbar-collapse collapse findlist">
+                    <ul class="nav navbar-nav navbar-right" id="navbar-menu" style="margin-right: 16%;">
+                        <li>
+
+                            <a href="">Bảo Hành </a>
+
+                        </li>
+                        
+                        <li>
+                            <a href="">Khuyến Mãi</a>
+                        </li>
+                        <li>
+                            <a href="">Trang chủ</a>
+                        </li>
+                        <li>
+                            <a href="">Liên hệ</a>
+                        </li>
+                        
+                        <li style="margin-top: 2%;"><input style="text"></li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>-->
 
 
         <!--Background-->
@@ -56,16 +87,16 @@ $_SESSION['username']="LeTuan";
         
 <?php
         $count = 0;
-        $query = "SELECT * FROM sanpham";
+        $query = "SELECT * FROM product";
         $result = mysqli_query($link, $query);
         if (mysqli_num_rows($result) == 0){
             die("No data in table");
         }
         
-        
+       
 ?>
 
-        <div class="sanpham">
+       <div class="sanpham">
         <div class="container">
             <div class="row">
                 <?php while ($col = mysqli_fetch_array($result)) {
@@ -78,20 +109,20 @@ $_SESSION['username']="LeTuan";
                         <div class="col-sm-2 <?=$col_half?>">
                         <div class="col-sm-12 mobile nopaddingsp">
                             <div class="phone">
-                                <img src="<?php echo "../Images/$col[picture]"; ?>" width="94%"
+                                <img src="<?php echo "../Images/$col[2]/$col[img]"; ?>" width="94%"
                                  height="auto"/>
                                 <div class="overlay"><!--hover xem chi tiet-->
                                 <a href="#" class="detailsmb">
                                        <i class="fa fa-eye"></i>
                                 </a><br/>
-                                <a href="#" class="detailsmb">
-                                      <i class="glyphicon glyphicon-shopping-cart"></i>
-                                </a><br/>
+                                <?php echo "<a href='addproduct.php?ID=$col[0]' class='detailsmb'>";
+                                     echo "<i class='glyphicon glyphicon-shopping-cart'></i>";
+                                    echo  "</a><br/>"; ?>
                                     </div>
                                 </div>
-                            <h5><?php echo "$col[namemobile]"; ?></h5>
-                            <span><?php echo "$col[price]"; ?></span>
-                            <div class="kmmobile"><?php echo "$col[discount]"; ?></div>
+                            <h5><?php echo "$col[name]"; ?></h5>
+                            <span><?php echo "$col[price]₫"; ?></span>
+                    
 
                         </div>
                     </div>
@@ -102,6 +133,7 @@ $_SESSION['username']="LeTuan";
             </div>
         </div>
             </div>
+
 
 <!-- footer-->
 </div>

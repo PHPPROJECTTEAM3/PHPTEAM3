@@ -1,8 +1,16 @@
 <!--header-->
 <?php
+include_once '../PRJ_Library/data_product.inc';
+session_start();
 $pageTitle = "Giohangcuaban";
 $activeMenu = "cart";
 include_once '../PRJ_Library/header.html';
+
+if(isset($_SESSION["cartuset"]) == FALSE)
+{
+    
+}
+    
 ?>
 
 <!--body-->
@@ -26,22 +34,31 @@ include_once '../PRJ_Library/header.html';
   
   
   <!--Sản phẩm của khách hàng đã chọn-->
-  <tbody><tr> 
+  <tbody>
+      <?php 
+    foreach ($_SESSION["cartuser"] as $ID=>$SP)
+    {
+       
+  
+ ?>
+      
+      
+      <tr> 
    <td data-th="Sản Phẩm"> 
     <div class="row"> 
      <div class="col-sm-2 ">
-         <img src="http://hocwebgiare.com/thiet_ke_web_chuan_demo/shopping_cart/images/090.jpg" alt="Sản phẩm 1" class="img-responsive" width="100">
+         <img src="<?php $SP->printImg(); ?>" alt="Sản phẩm 1" class="img-responsive" width="100">
      </div> 
      <div class="col-sm-10"> 
-      <h4 class="nomargin">Sản phẩm 1</h4> 
+      <h4 class="nomargin"><?php $SP->printName(); ?></h4> 
       <p>Mô tả của sản phẩm 1</p> 
      </div> 
     </div> 
    </td> 
-   <td data-th="Price">200.000 đ</td> 
-   <td data-th="Quantity"><input class="form-control text-center" value="1" type="number">
+   <td data-th="Price"><?php $SP->printPrice(); ?>đ</td> 
+   <td data-th="Quantity"><input class="form-control text-center" value="<?php $SP->printAmount(); ?>" type="number">
    </td> 
-   <td data-th="Subtotal" class="text-center">200.000 đ</td> 
+   <td data-th="Subtotal" class="text-center"><?php $SP->printTotal(); ?>đ</td> 
    <td class="actions" data-th="">
     <button class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
     </button> 
@@ -49,52 +66,10 @@ include_once '../PRJ_Library/header.html';
     </button>
    </td> 
   </tr> 
-  <tr> 
-   <td data-th="Sản Phẩm"> 
-    <div class="row"> 
-     <div class="col-sm-2"><img src="http://hocwebgiare.com/thiet_ke_web_chuan_demo/shopping_cart/images/090.jpg" alt="Sản phẩm 1" class="img-responsive" width="100">
-     </div> 
-     <div class="col-sm-10"> 
-      <h4 class="nomargin">Sản phẩm 1</h4> 
-      <p>Mô tả của sản phẩm 1</p> 
-     </div> 
-    </div> 
-   </td> 
-   <td data-th="Price">200.000 đ</td> 
-   <td data-th="Quantity"><input class="form-control text-center" value="1" type="number">
-   </td> 
-   <td data-th="Subtotal" class="text-center">200.000 đ</td> 
-   <td class="actions" data-th="">
-    <button class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
-    </button> 
-    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
-    </button>
-   </td> 
-  </tr> 
-  <tr> 
-   <td data-th="Sản Phẩm"> 
-    <div class="row"> 
-     <div class="col-sm-2 "><img src="http://hocwebgiare.com/thiet_ke_web_chuan_demo/shopping_cart/images/174.jpg" alt="Sản phẩm 1" class="img-responsive" width="100">
-     </div> 
-     <div class="col-sm-10"> 
-      <h4 class="nomargin">Sản phẩm 2</h4> 
-      <p>Mô tả của sản phẩm 2</p> 
-     </div> 
-    </div> 
-   </td> 
-   
-   <td data-th="Price">300.000 đ</td> 
-   <td data-th="Quantity"><input class="form-control text-center" value="1" type="number">
-   </td> 
-   <td data-th="Subtotal" class="text-center">300.000 đ</td> 
-   <td class="actions" data-th="">
-    <button class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
-    </button> 
-    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
-    </button>
-   </td> 
-  </tr> 
-  </tbody><tfoot> 
+  
+  <?php } ?>
+  </tbody>
+  <tfoot> 
    <tr class="visible-xs"> 
     <td class="text-center"><strong>Tổng 200.000 đ</strong>
     </td> 

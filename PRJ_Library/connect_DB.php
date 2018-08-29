@@ -7,7 +7,7 @@
 $host = "localhost"; //ten may chu database trong mysql
 $uid = "root";       //tai khoan dang nhap mac dinh vao sql
 $pwd = "";           //mat khau
-$db = "project_hk2";
+$db = "php_project_ver2";
 //tao ket noi
 $link = mysqli_connect($host,$uid,$pwd,$db);
 
