@@ -4,7 +4,7 @@
 session_start();
 $pageTitle = "PHPMOBILE";
 $activeMenu = "home";
-$_SESSION['username']="LeTuan";
+$_SESSION['username']="Tài Khoản";
 
    include_once '../PRJ_Library/header.html';
    
@@ -107,10 +107,9 @@ $_SESSION['username']="LeTuan";
                     ?>
                 <div>
                         <div class="col-sm-2 <?=$col_half?>">
-                        <div class="col-sm-12 mobile nopaddingsp">
+                            <div class="col-sm-12 mobile nopaddingsp" style="margin-top:5%; padding-bottom: 3%;">
                             <div class="phone">
-                                <img src="<?php echo "../Images/$col[2]/$col[img]"; ?>" width="94%"
-                                 height="auto"/>
+                                <img width="120px" height="150px" src="<?php echo "../Images/$col[2]/$col[img]"; ?>"/>
                                 <div class="overlay"><!--hover xem chi tiet-->
                                 <a href="#" class="detailsmb">
                                        <i class="fa fa-eye"></i>
