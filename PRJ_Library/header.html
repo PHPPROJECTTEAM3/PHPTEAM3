@@ -1,0 +1,160 @@
+<?php
+include_once '../PRJ_Library/connect.php';
+session_start();
+?>
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title><?php echo $pageTitle ?></title>
+        <link href="Template.css" rel="stylesheet" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <link href="../Code/dangkydangnhap.css" rel="stylesheet" type="text/css"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+         
+
+    </head>
+    <body>
+        <!--phần menu-->
+        <div id="head">
+            <nav class="navbar-custom navbar-fixed-top" id="navbar">
+                <div id="background-menu" class="header-menu">
+                    <div class="container">
+
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="#"  class="navbar-brand">
+                                <img style="height: 70px; display: inline-block; margin-top: -10px;" src="../Images/Thegioididong-icon.png" usemap="#Map" border="0">
+                            </a>
+                        </div>
+
+                        <div class="navbar-collapse collapse" id="menu">
+                            <ul class="nav navbar-nav navbar-right" id="navbar-menu">
+
+                                <li <?php if($activeMenu == "home"){echo " class='active'";}?>>
+
+                                    <a href="Home.php">Trang Chủ </a>
+
+                                </li>
+                                <li><a href="">Giới Thiệu</a></li>
+                                <li>
+                                    <a href="">Liên Hệ</a>
+                                </li>
+                                <li><div class="search-box">
+                                        <input class="search-txt" type="text" name="" placeholder="Search...">
+                                        <a class="search-btn" href="#">
+                                            <i class="fas fa-search"></i>
+                                        </a>
+                                    </div>  
+                                </li>
+
+                                <li>
+                                    
+                                    <!--loginuser-->
+                                    <div href="" onclick="document.getElementById('modal-wrapper').style.display='block'" style="padding-top: 14%; padding-left: 3%;">
+                                        <i class="glyphicon glyphicon-user" style="font-size: 18px;"></i>
+                                        <?php
+                                        if(isset($_SESSION['username']))
+                                        {
+                                            echo "Chào ".$_SESSION['username'];
+                                        }else{
+                                            echo "Tài Khoản";
+                                        }
+                                        ?>
+                                        
+                                    </div>
+                                        
+                                    <!--formloginuser-->
+       <div id="modal-wrapper" class="modal">
+  
+    <form class="modalsign-content animatesign" method="POST" action="/action_page.php" style="width: 60%">
+        
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+      <div class="login-wrap">
+	<div class="login-html">
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+		<div class="login-form">
+                         
+			<div class="sign-in-htm">
+				<div class="group">
+					<label for="user" class="label">Username</label>
+					<input id="user" type="text" class="input">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Password</label>
+					<input id="pass" type="password" class="input" data-type="password">
+				</div>
+				<div class="group">
+					<input id="check" type="checkbox" class="check" checked>
+					<label for="check"><span class="icon"></span> Keep me Signed in</label>
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="Sign In">
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="#forgot">Forgot Password?</a>
+				</div>
+			</div>
+			<div class="sign-up-htm">
+				<div class="group">
+					<label for="user" class="label">Username</label>
+					<input id="user" type="text" class="input">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Password</label>
+					<input id="pass" type="password" class="input" data-type="password">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Repeat Password</label>
+					<input id="pass" type="password" class="input" data-type="password">
+				</div>
+				<div class="group">
+					<label for="pass" class="label">Email Address</label>
+					<input id="pass" type="text" class="input">
+				</div>
+				<div class="group">
+					<input type="submit" class="button" value="Sign Up">
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+    </div>
+    </form>
+       </div><!--formloginuser-->
+       
+                                </li>    <!--loginuser-->
+                                <li<?php if($activeMenu == "cart"){echo " class='active'";}?>>
+                                    <a href="Giohang.php">
+                                        <span class="glyphicon glyphicon-shopping-cart" style="font-size: 18px;"></span>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+        <div style="background-color: #cccccc">
