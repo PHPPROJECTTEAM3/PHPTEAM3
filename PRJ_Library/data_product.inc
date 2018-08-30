@@ -27,7 +27,7 @@ class product_amount
    {
         echo"$this->proPrice";
    }
-public  function printAmount()
+public  function printQuantity()
    {
         echo"$this->proAmount";
    }
@@ -39,10 +39,7 @@ public  function printImg()
    {
         echo"../Images/$this->proBrand/$this->proImg";
    }
-public  function printTotal()
-   {
-        echo ($this->proAmount*$this->proPrice);
-   }
+
 
    
    

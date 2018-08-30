@@ -20,8 +20,19 @@ include_once '../PRJ_Library/connect_DB.php';
         <script src="js/jquery-1.11.1.min.js"></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-         
+       
+        
+        <script>
+      function validate(){
 
+            var pass = document.getElementById("su_pass").value;
+            var comfirm_pass = document.getElementById("su_cfpass").value;
+            if (pass!=comfirm_pass) {
+                   alert('Nhập Lại Mật Khẩu Không Chính');
+               return false;
+            }
+        }
+            </script>
     </head>
     <body>
         <!--phần menu-->
@@ -68,9 +79,9 @@ include_once '../PRJ_Library/connect_DB.php';
                                     <div href="" onclick="document.getElementById('modal-wrapper').style.display='block'" style="padding-top: 14%; padding-left: 3%;">
                                         <i class="glyphicon glyphicon-user" style="font-size: 18px;"></i>
                                         <?php
-                                        if(isset($_SESSION['username']))
+                                        if(isset($_SESSION["username"]))
                                         {
-                                            echo "Chào ".$_SESSION['username'];
+                                            echo "Chào ".$_SESSION["username"];
                                         }else{
                                             echo "Tài Khoản";
                                         }
@@ -81,60 +92,61 @@ include_once '../PRJ_Library/connect_DB.php';
                                     <!--formloginuser-->
        <div id="modal-wrapper" class="modal">
   
-    <form class="modalsign-content animatesign" method="POST" action="/action_page.php" style="width: 60%">
+    <form class="modalsign-content animatesign" style="width: 60%">
         
     <div class="imgcontainer">
       <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
       <div class="login-wrap">
 	<div class="login-html">
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
-		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Đăng Nhập</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Đăng Ký</label>
                 <form class="modalsign-content animatesign"></form>
                 <div class="login-form">
-                    <form class="login">
+                    <form class="login" action="../Code/signIn_User.php" method="POST">
 			<div class="sign-in-htm">
 				<div class="group">
-					<label for="user" class="label">Username</label>
-					<input id="user" type="text" class="input">
+					<label for="user" class="label">Tên Đăng Nhập</label>
+                                        <input id="user" type="text" class="input" required maxlength="15" name="user_si">
 				</div>
 				<div class="group">
-					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<label for="pass" class="label">Mật Khẩu</label>
+                                        <input id="pass" type="password" class="input" data-type="password" required maxlength="15" name="pass_si">
 				</div>
 				<div class="group">
 					<input id="check" type="checkbox" class="check" checked>
-					<label for="check"><span class="icon"></span> Keep me Signed in</label>
+					<label for="check"><span class="icon"></span>Ghi Nhớ Tài Khoản</label>
 				</div>
 				<div class="group">
-					<input type="submit" class="button" value="Sign In">
+                                    <input type="submit" class="button" value="Đăng Nhập" name="bt_signIn">
 				</div>
 				<div class="hr"></div>
 				<div class="foot-lnk">
-					<a href="#forgot">Forgot Password?</a>
+					<a href="#forgot">Quên Mật Khẩu?</a>
 				</div>
 			</div>
                     </form>
                     
-                    <form class="formreg">
+                    <form class="formreg" onSubmit="return validate();" action="../Code/signUp_user.php" method="POST">
 			<div class="sign-up-htm">
 				<div class="group">
-					<label for="user" class="label">Username</label>
-					<input id="user" type="text" class="input">
+					<label for="user" class="label">Tên Đăng Nhập</label>
+                                        <input id="user" type="text" class="input" required name="username" maxlength="15">
 				</div>
 				<div class="group">
-					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<label for="pass" class="label">Mật Khẩu</label>
+                                        <input id="su_pass" type="password" class="input" data-type="password" required name="password" maxlength="15">
 				</div>
 				<div class="group">
-					<label for="pass" class="label">Repeat Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
+					<label for="pass" class="label">Xác Nhận Mật Khẩu</label>
+                                        <input id="su_cfpass" type="password" class="input" data-type="password" required maxlength="15">
+                                        <span id='message'></span>
 				</div>
 				<div class="group">
-					<label for="pass" class="label">Email Address</label>
-					<input id="pass" type="text" class="input">
+					<label for="pass" class="label">Địa Chỉ Email</label>
+                                        <input id="pass" type="email" class="input" required name="email" maxlength="50">
 				</div>
 				<div class="group">
-					<input type="submit" class="button" value="Sign Up">
+                                    <input type="submit" class="button" value="Đăng Ký" name="bt_signIn">
 				</div>
 				
 			</div>

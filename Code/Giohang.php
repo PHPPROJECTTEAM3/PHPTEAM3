@@ -15,6 +15,7 @@ if(isset($_SESSION["cartuset"]) == FALSE)
 
 <!--body-->
 
+<form method="GET">
 <div class="DetailsGioHang">
     
        <h2 class="text-center">Giỏ hàng của bạn</h2>
@@ -36,10 +37,12 @@ if(isset($_SESSION["cartuset"]) == FALSE)
   <!--Sản phẩm của khách hàng đã chọn-->
   <tbody>
       <?php 
+      $count=1;
+
     foreach ($_SESSION["cartuser"] as $ID=>$SP)
     {
        
-  
+       
  ?>
       
       
@@ -51,14 +54,17 @@ if(isset($_SESSION["cartuset"]) == FALSE)
      </div> 
      <div class="col-sm-10"> 
       <h4 class="nomargin"><?php $SP->printName(); ?></h4> 
-      <p>Mô tả của sản phẩm 1</p> 
+      <p>Nhà Sản Xuất: <?php $SP-> printBrand(); ?></p> 
      </div> 
     </div> 
    </td> 
-   <td data-th="Price"><?php $SP->printPrice(); ?>đ</td> 
-   <td data-th="Quantity"><input class="form-control text-center" value="<?php $SP->printAmount(); ?>" type="number">
+   <td data-th="Price"><?php $SP->printPrice(); ?>đ <input type="hidden" value="<?php $SP->printPrice(); ?>" name="price_pro"></td>
+   <td data-th="Quantity"><input class="form-control text-center" value="<?php $SP->printQuantity(); ?>" type="number" name="<?php echo "quantity_pro$count" ?>">
    </td> 
-   <td data-th="Subtotal" class="text-center"><?php $SP->printTotal(); ?>đ</td> 
+
+    
+   <td data-th="Subtotal" class="text-center"><?php $SP->printQuantity();  ?></td> 
+
    <td class="actions" data-th="">
     <button class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
     </button> 
@@ -67,7 +73,7 @@ if(isset($_SESSION["cartuset"]) == FALSE)
    </td> 
   </tr> 
   
-  <?php } ?>
+  <?php $count++; } ?>
   </tbody>
   <tfoot> 
    <tr class="visible-xs"> 
@@ -87,8 +93,9 @@ if(isset($_SESSION["cartuset"]) == FALSE)
  </table>
 </div>
 </div>
-
+</form>
 <!--footer-->
 <?php
 include_once '../PRJ_Library/footer.html';
 ?>
+

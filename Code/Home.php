@@ -4,7 +4,14 @@
 session_start();
 $pageTitle = "PHPMOBILE";
 $activeMenu = "home";
-$_SESSION['username']="Tài Khoản";
+
+if(isset($_GET["name"]))
+{
+    $_SESSION["username"] = $_GET["name"];
+} else {
+    $_SESSION["username"] = NULL;
+}
+
 
    include_once '../PRJ_Library/header.html';
    
@@ -121,8 +128,6 @@ $_SESSION['username']="Tài Khoản";
                                 </div>
                             <h5><?php echo "$col[name]"; ?></h5>
                             <span><?php echo "$col[price]₫"; ?></span>
-                    
-
                         </div>
                     </div>
                     
