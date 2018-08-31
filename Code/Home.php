@@ -20,7 +20,7 @@ if(isset($_GET["name"]))
 <?php 
         $query1 = "SELECT * FROM advertise";
         $result1 = mysqli_query($link, $query1);
-        if (mysqli_num_rows($result1) == 0){
+        if(mysqli_num_rows($result1) == 0){
             die("No data in table");
         }
 ?>

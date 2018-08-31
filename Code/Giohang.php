@@ -5,17 +5,12 @@ session_start();
 $pageTitle = "Giohangcuaban";
 $activeMenu = "cart";
 include_once '../PRJ_Library/header.html';
-
-if(isset($_SESSION["cartuset"]) == FALSE)
-{
-    
-}
-    
 ?>
 
+    </table>
 <!--body-->
 
-<form method="GET">
+<form method="GET" action="DatHang_LuuHoaDon.php">
 <div class="DetailsGioHang">
     
        <h2 class="text-center">Giỏ hàng của bạn</h2>
@@ -29,7 +24,8 @@ if(isset($_SESSION["cartuset"]) == FALSE)
     <th style="width:10%">Giá</th> 
     <th style="width:8%">Số lượng</th> 
     <th style="width:22%" class="text-center">Thành tiền</th> 
-    <th style="width:10%"> </th> 
+    <th style="width:5%">Chỉnh Sửa</th> 
+    <th style="width:5%">Xóa</th> 
    </tr> 
   </thead> 
   
@@ -39,10 +35,13 @@ if(isset($_SESSION["cartuset"]) == FALSE)
       <?php 
       $count=1;
 
-    foreach ($_SESSION["cartuser"] as $ID=>$SP)
+if(!(isset($_SESSION["cartuser"])))
+{
+    echo '<td><h4>Giỏ Hàng Trống</h4></td>';
+    exit();
+}
+   foreach ($_SESSION["cartuser"] as $ID=>$SP)
     {
-       
-       
  ?>
       
       
@@ -58,22 +57,18 @@ if(isset($_SESSION["cartuset"]) == FALSE)
      </div> 
     </div> 
    </td> 
-   <td data-th="Price"><?php $SP->printPrice(); ?>đ <input type="hidden" value="<?php $SP->printPrice(); ?>" name="price_pro"></td>
-   <td data-th="Quantity"><input class="form-control text-center" value="<?php $SP->printQuantity(); ?>" type="number" name="<?php echo "quantity_pro$count" ?>">
-   </td> 
-
-    
-   <td data-th="Subtotal" class="text-center"><?php $SP->printQuantity();  ?></td> 
-
+   <td data-th="Price"><?php $SP->printPrice(); ?>đ</td>
+   <td data-th="Quantity"><?php $SP->printAmount(); ?></td>  
+   <td data-th="Subtotal" class="text-center"><?php $SP->printTotal() ?>đ</td> 
    <td class="actions" data-th="">
     <button class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
     </button> 
-    <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i>
-    </button>
-   </td> 
+   </td>
+   <td class="actions" data-th=""> 
+       <a href="<?php echo "delete_sanpham_trong_Giohang.php?ID=$SP->proID" ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a></td>
   </tr> 
   
-  <?php $count++; } ?>
+<?php $count++; } ?>
   </tbody>
   <tfoot> 
    <tr class="visible-xs"> 
@@ -81,12 +76,16 @@ if(isset($_SESSION["cartuset"]) == FALSE)
     </td> 
    </tr> 
    <tr> 
-    <td><a href="http://hocwebgiare.com/" class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
+       <td><a href="Home.php" class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
     </td> 
     <td colspan="2" class="hidden-xs"> </td> 
-    <td class="hidden-xs text-center"><strong>Tổng tiền 500.000 đ</strong>
+    <?php foreach ($_SESSION["cartuser"] as $ID=>$SP)
+    {
+        $total_invoice += ($SP->proAmount*$SP->proPrice);
+    }?>
+    <td class="hidden-xs text-center"><strong><?php echo $total_invoice ?> đ</strong>
     </td> 
-    <td><a href="http://hocwebgiare.com/" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
+    <td><button value="bt_order"  class="btn btn-success btn-block" onclick="javascript: return confirm('Xác Nhận Đặt Hàng')">Thanh toán <i class="fa fa-angle-right"></i></button>
     </td> 
    </tr> 
   </tfoot> 
