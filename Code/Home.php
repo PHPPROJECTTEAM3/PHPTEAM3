@@ -17,6 +17,13 @@ if(isset($_GET["name"]))
    
 ?>    
 
+<?php 
+        $query1 = "SELECT * FROM advertise";
+        $result1 = mysqli_query($link, $query1);
+        if (mysqli_num_rows($result1) == 0){
+            die("No data in table");
+        }
+?>
 <!--phần tìm nhanh-->
 
 <!--<div class="gird-container">
@@ -52,11 +59,16 @@ if(isset($_GET["name"]))
         <div class="container">
             <div class="row">
   <div class="slideqc" style="margin-top:8%;">
+    
+      <?php while ($col1 = mysqli_fetch_array($result1)) { ?>
     <div class="slideshow-container">
-       <div class="mySlides">
-           <img src="../Images/qc4.jpg" width="100%" >
-      </div>
-    </div>
+      <div class="mySlides"> 
+          <img width="100%" height="100%" src="<?php echo"../Images/$col1[img_adv]"; ?>">
+        
+</div>
+</div>
+  <?php } ?>
+    
     </div>
     </div>
         </div>
