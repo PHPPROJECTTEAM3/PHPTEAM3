@@ -40,8 +40,12 @@ public  function printImg()
         echo"../Images/$this->proBrand/$this->proImg";
    }
 
-
+public function printTotal()
+{
+    echo ($this->proPrice*$this->proAmount);
+}
    
+  
    
    
   

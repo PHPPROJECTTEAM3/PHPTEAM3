@@ -9,18 +9,18 @@
             $acc = $_POST["username"];
             $pass = $_POST["password"];
             $mail = $_POST["email"];
-          
-            $query = "INSERT INTO `member`(`acc`,`pass`,`mail`) VALUES ('$acc','$pass','$mail')";
-            $result = mysqli_query($link, $query);
-            if (!($result))
+            $default_reliability ="Khá";
+            $query = "INSERT INTO `member`(`acc`,`pass`,`mail`,`reliability`) VALUES ('$acc','$pass','$mail','$default_reliability')";
+            $num = mysqli_query($link, $query);
+            if ($num==0)
             {
                 die('Đăng Ký Thất Bại');
             } else {
                 echo'<h4>Đăng Ký Thành Công</h4>';    
             }
+            
         mysqli_close($link);
-                        exit();
+            exit();
         }
-
         ?>
 

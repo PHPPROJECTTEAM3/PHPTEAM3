@@ -7,7 +7,7 @@
             
             $query = "SELECT * FROM member WHERE acc like '$acc_si' AND pass like '$pass_si'";
             $result = mysqli_query($link, $query);
-            if (!($result))
+            if (mysqli_num_rows($result)==0)
             {
                 die('Đăng Nhập Thất Bại');
             } else {

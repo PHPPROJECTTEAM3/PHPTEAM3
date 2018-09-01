@@ -33,7 +33,7 @@ include_once '../PRJ_Library/header.html';
   <!--Sản phẩm của khách hàng đã chọn-->
   <tbody>
       <?php 
-      $count=1;
+    
 
 if(!(isset($_SESSION["cartuser"])))
 {
@@ -58,7 +58,7 @@ if(!(isset($_SESSION["cartuser"])))
     </div> 
    </td> 
    <td data-th="Price"><?php $SP->printPrice(); ?>đ</td>
-   <td data-th="Quantity"><?php $SP->printAmount(); ?></td>  
+   <td data-th="Quantity"><?php $SP->printQuantity(); ?></td>  
    <td data-th="Subtotal" class="text-center"><?php $SP->printTotal() ?>đ</td> 
    <td class="actions" data-th="">
     <button class="btn btn-info btn-sm"><i class="fa fa-edit"></i>
@@ -68,9 +68,14 @@ if(!(isset($_SESSION["cartuser"])))
        <a href="<?php echo "delete_sanpham_trong_Giohang.php?ID=$SP->proID" ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a></td>
   </tr> 
   
-<?php $count++; } ?>
+<?php } ?>
   </tbody>
+  
   <tfoot> 
+      <tr>
+      <td><label><h3>Ghi Chú</h3></label><br/>
+    <textarea name="note_cus" maxlength="500" rows="5" cols="100"></textarea></td>
+  </tr>
    <tr class="visible-xs"> 
     <td class="text-center"><strong>Tổng 200.000 đ</strong>
     </td> 
@@ -79,17 +84,20 @@ if(!(isset($_SESSION["cartuser"])))
        <td><a href="Home.php" class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
     </td> 
     <td colspan="2" class="hidden-xs"> </td> 
-    <?php foreach ($_SESSION["cartuser"] as $ID=>$SP)
+    <?php 
+    $total_invoice =0;
+    foreach ($_SESSION["cartuser"] as $ID=>$SP)
     {
         $total_invoice += ($SP->proAmount*$SP->proPrice);
     }?>
-    <td class="hidden-xs text-center"><strong><?php echo $total_invoice ?> đ</strong>
+    <td class="hidden-xs text-center"><strong><?php echo $total_invoice ?>đ</strong><input type="hidden" name="total_invoice" value="<?php echo $total_invoice ?>">
     </td> 
-    <td><button value="bt_order"  class="btn btn-success btn-block" onclick="javascript: return confirm('Xác Nhận Đặt Hàng')">Thanh toán <i class="fa fa-angle-right"></i></button>
+    <td><button  name="bt_order" value="bt_order"  class="btn btn-success btn-block" onclick="javascript: return confirm('Xác Nhận Đặt Hàng')">Thanh toán <i class="fa fa-angle-right"></i></button>
     </td> 
    </tr> 
   </tfoot> 
  </table>
+    
 </div>
 </div>
 </form>

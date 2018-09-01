@@ -9,7 +9,7 @@ if(isset($_GET["name"]))
 {
     $_SESSION["username"] = $_GET["name"];
 } else {
-    $_SESSION["username"] = NULL;
+    
 }
 
 

@@ -22,9 +22,9 @@ include_once '../PRJ_Library/connect_DB.php';
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
        
         
-        <script>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script language="JavaScript" type="text/javascript">
       function validate(){
-
             var pass = document.getElementById("su_pass").value;
             var comfirm_pass = document.getElementById("su_cfpass").value;
             if (pass!=comfirm_pass) {
@@ -32,6 +32,7 @@ include_once '../PRJ_Library/connect_DB.php';
                return false;
             }
         }
+    
             </script>
     </head>
     <body>
