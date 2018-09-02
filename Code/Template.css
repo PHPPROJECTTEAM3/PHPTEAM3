@@ -4,10 +4,20 @@
     background-color: black;
 }
 .above-nav p {
-    color:#fff;
-    line-height: 40px;
-    font-size:20px;
-    padding: 0;
+    color: #fff;
+    line-height: 30px;
+    font-size: 20px;
+    padding-top: 1%;
+    position: absolute;
+    font-size: 15px;
+    font-style: oblique;
+}
+.above-nav i {
+    color: #fff;
+    line-height: 30px;
+    font-size: 20px;
+    padding-top: 1%;
+    position: absolute;
 }
 
 .navbar {
