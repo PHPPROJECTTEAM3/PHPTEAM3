@@ -58,7 +58,7 @@ if(isset($_GET["name"]))
         
         <div class="container">
             <div class="row">
-  <div class="slideqc" style="margin-top:8%;">
+  <div class="slideqc" style="margin-top:0.5rem;">
     
       <?php while ($col1 = mysqli_fetch_array($result1)) { ?>
     <div class="slideshow-container">
@@ -204,6 +204,10 @@ $('#buttonsearch').click(function(){
 				$('#searchbox').focus()
 				$('.openclosesearch').toggle();
 		});
-                
+     
+     
+     
+     
      
 </script>
+
