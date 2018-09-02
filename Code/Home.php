@@ -13,7 +13,7 @@ if(isset($_GET["name"]))
 }
 
 
-   include_once '../PRJ_Library/header.html';
+   include_once '../PRJ_Library/header.php';
    
 ?>    
 

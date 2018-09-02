@@ -21,7 +21,7 @@
 session_start();
 $pageTitle = "Tài Khoản";
 $activeMenu = "home";
-include_once '../PRJ_Library/header.html';
+include_once '../PRJ_Library/header.php';
 
 include_once '../PRJ_Library/connect_DB.php';
 ?>

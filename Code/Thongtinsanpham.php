@@ -1,7 +1,7 @@
 <?php
 $pageTitle = "ThongTinSanPham";
 $activeMenu = "home";
-include_once '../PRJ_Library/header.html';
+include_once '../PRJ_Library/header.php';
 ?>
 
 <?php

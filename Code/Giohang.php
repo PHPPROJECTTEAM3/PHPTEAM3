@@ -4,13 +4,13 @@ include_once '../PRJ_Library/data_product.inc';
 session_start();
 $pageTitle = "Giohangcuaban";
 $activeMenu = "cart";
-include_once '../PRJ_Library/header.html';
+include_once '../PRJ_Library/header.php';
 ?>
 
     </table>
 <!--body-->
 
-<form method="GET" action="DatHang_LuuHoaDon.php">
+<form method="GET" action="DatHang_LuuHoaDon.php" style="padding-bottom: 1%;">
 <div class="DetailsGioHang">
     
        <h2 class="text-center">Giỏ hàng của bạn</h2>

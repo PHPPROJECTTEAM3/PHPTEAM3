@@ -20,7 +20,7 @@
 <?php
 $pageTitle = "Members";
 $activeMenu = "home";
-include_once '../PRJ_Library/header.html';
+include_once '../PRJ_Library/header.php';
 ?>
 
 <div class="container" style="padding-bottom: 10%;">
