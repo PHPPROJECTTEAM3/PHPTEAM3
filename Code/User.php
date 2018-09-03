@@ -19,13 +19,14 @@
     <body>-->
 <?php
 $pageTitle = "Members";
-$activeMenu = "taikhoan";
-if(isset($_GET["name"]))
-{
-    $_SESSION["username"] = $_GET["name"];
-} else {
-    
-}
+$activeMenu = "";
+session_start();
+//if(isset($_GET["name"]))
+//{
+//    $_SESSION["username"] = $_GET["name"];
+//} else {
+//    
+//}
 include_once '../PRJ_Library/header.php';
 ?>
 
