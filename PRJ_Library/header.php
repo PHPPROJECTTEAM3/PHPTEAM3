@@ -76,23 +76,38 @@ include_once '../PRJ_Library/connect_DB.php';
             <div class="col-sm-8">
                 <p>PHPMOBILE@GMAIL.COM - Hotline:1900 9090</p>
             </div>
-            <div class="col-sm-3" style="padding-left: 9%;">
+            <div class="col-sm-3 <?php if($activeMenu == 'taikhoan'){echo 'active';}?>" style="padding-left: 9%;">
                 
-                                    
-                                    <!--loginuser-->
-                                    <div href="" onclick="document.getElementById('modal-wrapper').style.display='block'">
+                <?php
+                    if(isset($_SESSION["username"]))
+                    {
+                ?>
+                <div style="padding-top: 5%;">
+                                        <i class="glyphicon glyphicon-user" style="font-size: 18px;"></i>
+                                        <a href="user.php" style="padding-top: 6%; padding-left: 13%; color: white;">
+                                            <?php
+                                            echo "Chào ".$_SESSION["username"];
+                                            ?>
+                                             
+                                        </a>
+                                    </div>
+                <?php
+                    }else{
+                ?>
+                    <div href="" onclick="document.getElementById('modal-wrapper').style.display='block'">
                                         <i class="glyphicon glyphicon-user" style="font-size: 18px;"></i>
                                         <div style="padding-top: 6%; padding-left: 13%; color: white;">
-                                        <?php
-                                        if(isset($_SESSION["username"]))
-                                        {
-                                            echo "Chào ".$_SESSION["username"];
-                                        }else{
-                                            echo "Tài Khoản";
-                                        }
-                                        ?>
+                                            Tài Khoản
                                         </div>
                                     </div>
+                <?php
+                    }
+                ?>
+               
+                                        
+                                    
+                                    <!--loginuser-->
+                                    
                                         
                                     <!--formloginuser-->
        <div id="modal-wrapper" class="modal">
@@ -163,7 +178,7 @@ include_once '../PRJ_Library/connect_DB.php';
     </form>
        </div><!--formloginuser-->
        
-                                  <!--loginuser-->
+                 <!--loginuser-->
             </div>
         </div>
     </div>

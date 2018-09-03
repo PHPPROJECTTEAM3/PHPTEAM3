@@ -68,7 +68,7 @@ if(!(isset($_SESSION["cartuser"])))
        <a href="<?php echo "delete_sanpham_trong_Giohang.php?ID=$SP->proID" ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></a></td>
   </tr> 
   
-<?php } ?>
+    <?php } ?>
   </tbody>
   
   <tfoot> 
