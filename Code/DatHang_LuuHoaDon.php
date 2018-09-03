@@ -78,7 +78,8 @@ if(!$result3)
 }
  else {
     mysqli_close($link);
-    header("location:Hoadon.php");
+    unset($_SESSION["cartuser"]);
+    header("location:Quanlytaikhoan.php");
 }
 
         exit();

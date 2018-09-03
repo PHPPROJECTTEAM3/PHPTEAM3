@@ -18,6 +18,7 @@
     </head>
     <body>-->
 <?php
+include_once '../PRJ_Library/data_product.inc';
 session_start();
 $pageTitle = "Tài Khoản";
 $activeMenu = "home";
@@ -35,191 +36,220 @@ include_once '../PRJ_Library/connect_DB.php';
                     <li><a id="bt_notice" href="">Thông báo</a></li>
                 </ul>     
             </div>
-            
 
- <?php
-                    if(!isset($_SESSION["username"]))
-                    {
-                        exit('Bặn Chưa Đăng Nhập');
-                    }
-                     $acc = $_SESSION["username"];
-                    ?>
-                <!-- Phần Hóa Đơn --> 
-                
-                <?php 
-               
 
-                $query3 = "SELECT invoice.ID ,invoice.ac_name , detail_invoice.img, detail_invoice.ID_Pro,detail_invoice.Name_pro,detail_invoice.Quantity_pro,detail_invoice.total 
-                            FROM invoice, detail_invoice 
-                            WHERE invoice.ID = detail_invoice.ID_Invoice AND invoice.ac_name ='$acc'";
+            <?php
+            if (!isset($_SESSION["username"])) {
+                exit('Bặn Chưa Đăng Nhập');
+            }
+            $acc = $_SESSION["username"];
+            ?>
+
+
+            <!-- Phần Hóa Đơn -->          
+            <div class="col-sm-8" style="background-color: white; text-align: center; border-radius:5px; margin-top: 20px;">
+                <?php
+                $query3 = "SELECT `ac_name`,`ID` FROM `invoice` WHERE ac_name= '$acc'";
                 $result3 = mysqli_query($link, $query3);
-                $num = mysqli_num_rows($result3);
-               
-                ?>
-                <div class="col-sm-8" style="background-color: white; text-align: center; border-radius:5px; ">
-                    <table class="table table-striped">
-                    <thead id="initial_invoice">
-                        <?php
-                        
-                         if($num ==0)
-                            {
-                                echo '<tr><td><h2>Chưa Có Đơn Hàng</h2></td></tr>';
-                            }else {    
-                                while ($col = mysqli_fetch_array($result3))
-                                {                           $code_invoice = 0;
-                               
-                               
-                        ?>
-                        <tr>
-                            <td><h3>Mã Đơn Hàng: <?php echo $col[0] ?></h3></td>
-                        </tr>
-                        <tr>
-                            <th>STT</th>
-                            <th>Hình Ảnh</th>
-                            <th>Mã Sản Phẩm</th>
-                            <th>Tên Sản phẩm</th>
-                            <th>Số Lượng</th>
-                            <th>Tổng Tiền</th>
-                        </tr>
-                        
-                         <?php 
-                                 $count = 1;
-                         {?>
-                    </thead>
-                    <tbody id="end_invoice">
-                        <tr>
+                $num = mysqli_num_rows($result3); //Xuất ra thông báo nếu ko có đơn
+                if($num == 0)
+                {
+                    echo " <div id='initial_invoice'>";
+                    echo "<table class='table table-striped'>";
+                    
+                    echo '<thead>';   
+
+                              echo '<tr>' ;           
+                                 echo  '<td><h3>Mã Đơn Hàng: 0 </h3></td>';
+                              echo '</tr>';
+                              echo '<tr>';
+                                echo   '<th>STT</th>';
+                                 echo  '<th>Hình Ảnh</th>';
+                                echo    '<th>Mã Sản Phẩm</th>';
+                                echo    '<th>Tên Sản phẩm</th>';
+                                echo    '<th>Số Lượng</th>';
+                                 echo   '<th>Tổng Tiền</th>';
+                               echo '</tr>';
+
+                            echo '</thead>';
                             
-                            <td><a href="#" class="listchr"><?php echo $count ?></a></td>
-                            <td><a href="#" class="listchr"><?php echo $col[2] ?></a></td>
-                            <td><a href="#" class="listchr"><?php echo $col[3] ?></a></td>
-                            <td><a href="#" class="listchr"><?php echo $col[4] ?></a></td>
-                            <td><a href="#" class="listchr"><?php echo $col[5] ?></a></td>
-                            <td><a href="#" class="listchr"><?php echo $col[6] ?></a></td>
-                        </tr>
-                    </tbody> 
-                </table>
-                            <?php $count++; }}}?>
-                    <!-- End Hóa Đơn -->
+                            echo '<tr><td><h4>Không Có Hóa Đơn</h4></td></tr>';
+                            echo '</table>';
+                            echo '</div>';
+                }
+                
+                while ($col = mysqli_fetch_array($result3)) {
+                    $num = mysqli_num_rows($result3);
+                    
+                    $count = 1;
+                    ?>
+                    <div id="initial_invoice">              
+                        <table class="table table-striped">
+
+                            <thead>      
+
+                                <tr>            
+                                    <td><h3>Mã Đơn Hàng: <?php echo $col[1]; ?></h3></td>
+                                </tr>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Hình Ảnh</th>
+                                    <th>Mã Sản Phẩm</th>
+                                    <th>Tên Sản phẩm</th>
+                                    <th>Số Lượng</th>
+                                    <th>Tổng Tiền</th>
+                                </tr>
+
+                            </thead>
 
 
-                    <!-- Phẩn Thông tin Tài Khoản -->
-                  <?php 
-                 
-                  
-                  $query = "SELECT * FROM `member` WHERE `acc` LIKE '$acc'";
-                  $result = mysqli_query($link, $query);
-                  
-                  $col = mysqli_fetch_array($result);
-                  ?>
+
+                            <?php
+                            $query4 = " SELECT detail_invoice.img, detail_invoice.ID_Pro,detail_invoice.Name_pro,detail_invoice.Quantity_pro,detail_invoice.total 
+                    FROM detail_invoice , invoice 
+                    WHERE invoice.ID = detail_invoice.ID_Invoice AND invoice.ac_name ='$col[0]' AND invoice.ID =$col[1]";
+                            $result4 = mysqli_query($link, $query4);
+                            while ($col2 = mysqli_fetch_array($result4)) {
+                                ?>
+                                <tbody>
+                                    <tr>
+
+                                        <td><a href="#" class="listchr"><?php echo $count ?></a></td>
+                                        <td><a href="#" class="listchr"><?php echo $col2[0] ?></a></td>
+                                        <td><a href="#" class="listchr"><?php echo $col2[1] ?></a></td>
+                                        <td><a href="#" class="listchr"><?php echo $col2[2] ?></a></td>
+                                        <td><a href="#" class="listchr"><?php echo $col2[3] ?></a></td>
+                                        <td><a href="#" class="listchr"><?php echo $col2[4] ?></a></td>
+                                    </tr>
+                                </tbody> 
+                                <?php $count++;
+                            }
+                            ?>
+                        </table>
+                </div>
+                <?php } ?>
+                <!-- End Hóa Đơn -->
+
+
+                <!-- Phẩn Thông tin Tài Khoản -->
+                <div id="profile">
+
+                    <?php
+                    $query = "SELECT * FROM `member` WHERE `acc` LIKE '$acc'";
+                    $result5 = mysqli_query($link, $query);
+
+                    $col = mysqli_fetch_array($result5);
+                    ?>  
+
                     <form method="POST">                      
                         <table class="table table-striped">
-                    <thead id="initial_profile">   
-                        <tr>
-                            <th><h2>Thông Tin Tài Khoản</h2></th>
-                        </tr>
-                    </thead>
+                            <thead>   
+                                <tr>
+                                    <th><h2>Thông Tin Tài Khoản</h2></th>
+                                </tr>
+                            </thead>
 
-                    <tbody id="end_profile" style="width: 100%;">
-                        <tr>
-                            <td><label>Họ và Tên Đệm</label> <input name="L_Name_profile" type="text" maxlength="30" required value="<?php echo $col[2]; ?>"></td>
+                            <tbody style="width: 100%;">
+                                <tr>
+                                    <td><label>Họ và Tên Đệm</label> <input name="L_Name_profile" type="text" maxlength="30" required value="<?php echo $col[2]; ?>"></td>
 
-                        </tr>
-                        <tr> <td><label>Tên</label> <input name="F_Name_profile" type="text" maxlength="20" required value="<?php echo $col[3]; ?>"></td></tr>
-                        <tr>
-                            <td><label>Số Điện Thoại</label> <input name="Phone_profile" type="tel" maxlength="10" required value="0<?php echo $col[5]; ?>"></td>
-                        </tr>
-                        <tr>
-                            <td><label>Địa Chỉ Email</label> <input name="Email_profile" type="email" maxlength="50" required value="<?php echo $col[4]; ?>"></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>Giới Tính</label>
-                                <select name="Gender_profile">
-                                    <option value="<?php echo $col[6]; ?>"><?php echo $col[6].' (Đã Chọn)' ?></option>
-                                    <option value="Nam">Nam</option>
-                                    <option value="Nữ">Nữ</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr> 
-                            <td><label>Ngày Sinh</label> <input name="Dob_profile" type="date" maxlength="10" required value="<?php echo $col[7]; ?>"></td>
-                        </tr>
-                         <tr> 
-                             <td><p><strong>Mức Độ Tin Cậy:</strong> <?php echo $col[8] ?></p></td>
-                        </tr>
-                        <tr>      
-                            <td><input name="bt_profile" type="submit" value="Cập Nhật Thông Tin"></td>
-                        </tr>
-                    </tbody>
+                                </tr>
+                                <tr> <td><label>Tên</label> <input name="F_Name_profile" type="text" maxlength="20" required value="<?php echo $col[3]; ?>"></td></tr>
+                                <tr>
+                                    <td><label>Số Điện Thoại</label> <input name="Phone_profile" type="tel" maxlength="10" required value="0<?php echo $col[5]; ?>"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Địa Chỉ Email</label> <input name="Email_profile" type="email" maxlength="50" required value="<?php echo $col[4]; ?>"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Giới Tính</label>
+                                        <select name="Gender_profile">
+                                            <option value="<?php echo $col[6]; ?>"><?php echo $col[6] . ' (Đã Chọn)' ?></option>
+                                            <option value="Nam">Nam</option>
+                                            <option value="Nữ">Nữ</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr> 
+                                    <td><label>Ngày Sinh</label> <input name="Dob_profile" type="date" maxlength="10" required value="<?php echo $col[7]; ?>"></td>
+                                </tr>
+                                <tr> 
+                                    <td><p><strong>Mức Độ Tin Cậy:</strong> <?php echo $col[8] ?></p></td>
+                                </tr>
+                                <tr>      
+                                    <td><input name="bt_profile" type="submit" value="Cập Nhật Thông Tin"></td>
+                                </tr>
+                            </tbody>
                         </table>
-                    </form>
-                  
+                    </form> <!-- Thông Tin Tài Khoản -->
+                    <?php
+if (isset($_POST["bt_profile"])) {
+    $l_name = $_POST["L_Name_profile"];
+    $f_name = $_POST["F_Name_profile"];
+    $phone_ = $_POST["Phone_profile"];
+    $email_ = $_POST["Email_profile"];
+    $gender_ = $_POST["Gender_profile"];
+    $Dob_ = $_POST["Dob_profile"];
 
-                    <script language="javascript">
-                        //Hide Hóa Đơn
-                        $("#initial_invoice").hide();
-                        $("#end_invoice").hide();
+    $query2 = "UPDATE `member` SET `l_name`='$l_name',`f_name`='$f_name',`mail`='$email_',`phone`= $phone_,`gender`= '$gender_',`date_birth`= '$Dob_' WHERE acc like '$acc'";
+    $result2 = mysqli_query($link, $query2);
+    if($result2 != false)
+    {
+     echo '<h2>Cập Nhật Thành Công</h2>';
+    } else {
+           echo '<h2>Cập Nhật Thất Bại</h2>';
+    }   
+}
+?>
+                </div>
+
+                <script language="javascript">
+                    //Hide Hóa Đơn
+                    $("#initial_invoice").hide();
+               
+
+                    // function Hóa Đơn
+                    $(document).ready(function () {
+                        $("#bt_invoice").click(function () {
+                            $("#initial_invoice").toggle();
+
+                            $("#profile").hide();
                         
-                        // function Hóa Đơn
-                        $(document).ready(function () {
-                            $("#bt_invoice").click(function () {
-                                $("#initial_invoice").toggle();
-                                $("#end_invoice").toggle();
-                  
-                                $("#initial_profile").hide();
-                                $("#end_profile").hide();
-                            });
-                         
-                         //function Profile
-                     
-                            $("#bt_profile").click(function () {
-                                $("#initial_profile").toggle();
-                                $("#end_profile").toggle();
-                                
-                                $("#initial_invoice").hide();
-                                $("#end_invoice").hide();
-                            });
-                        }); //End $(document).ready function
-                    </script>
+                        });
+
+                        //function Profile
+
+                        $("#bt_profile").click(function () {
+                            $("#profile").toggle();
+                          
+                            $("#initial_invoice").hide();
+
+                        });
+                    }); //End $(document).ready function
+                </script>
 
 <!--<tbody>
-                    <?php foreach ($result as $key => $item) { ?>
-    <tr>
-    <td><a href="#" class="listchr"><?php echo $key + 1; ?></a></td>
-    <td><a href="#" class="listchr"><?php echo "$item[namechurch]" ?></a></td>
-    </tr>
-                    <?php } ?>
+<?php foreach ($result as $key => $item) { ?>
+            <tr>
+            <td><a href="#" class="listchr"><?php echo $key + 1; ?></a></td>
+            <td><a href="#" class="listchr"><?php echo "$item[namechurch]" ?></a></td>
+            </tr>
+<?php } ?>
 </tbody>  -->
-                                  
+
             </div>
+
+
+
         </div>
     </div>
 </div>
 
-<?php 
-                    if(isset($_POST["bt_profile"]))
-                    {
-                        $l_name = $_POST["L_Name_profile"];
-                        $f_name = $_POST["F_Name_profile"];
-                        $phone_ = $_POST["Phone_profile"];
-                        $email_ = $_POST["Email_profile"];
-                        $gender_ = $_POST["Gender_profile"];
-                        $Dob_ = $_POST["Dob_profile"];
-                     
-                        $query2 ="UPDATE `member` SET `l_name`='$l_name',`f_name`='$f_name',`mail`='$email_',`phone`= $phone_,`gender`= '$gender_',`date_birth`= '$Dob_' WHERE acc like '$acc'";
-                        $result2 = mysqli_query($link, $query2);
-                        if ($result)
-                        {
-                            echo '<h2>Cập Nhật Thành Công</h2>';
-                           //header("Refresh:0;"); Không Dùng được lệnh header
-                        }
-                        
-                        
-                        
-                    }
-                    ?>
+
 
 
 <?php
 include_once '../PRJ_Library/footer.html';
+mysqli_close($link);
 ?>

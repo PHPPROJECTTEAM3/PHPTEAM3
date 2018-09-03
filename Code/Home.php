@@ -1,6 +1,7 @@
 <!--header-->
 
 <?php 
+include_once '../PRJ_Library/data_product.inc';
 session_start();
 $pageTitle = "PHPMOBILE";
 $activeMenu = "home";
@@ -105,6 +106,8 @@ if(isset($_GET["name"]))
 <!-- phan san pham-->
         
 <?php
+
+                                
         $count = 0;
         $query = "SELECT * FROM product";
         $result = mysqli_query($link, $query);
@@ -128,7 +131,7 @@ if(isset($_GET["name"]))
                         <div class="col-sm-2 <?=$col_half?>">
                             <div class="col-sm-12 mobile nopaddingsp" style="margin-top:5%; padding-bottom: 3%;">
                             <div class="phone">
-                                <img width="120px" height="150px" src="<?php echo "../Images/$col[2]/$col[img]"; ?>"/>
+                                    <img width="120px" height="150px" src="<?php echo "../Images/$col[2]/$col[img]"; ?>"/>
                                 <div class="overlay"><!--hover xem chi tiet-->
                                 <a href="#" class="detailsmb">
                                        <i class="fa fa-eye"></i>
@@ -155,6 +158,7 @@ if(isset($_GET["name"]))
 </div>
 <?php
 include_once '../PRJ_Library/footer.html';
+mysqli_close($link);
 ?>
 
 
