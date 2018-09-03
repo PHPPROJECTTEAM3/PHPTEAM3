@@ -25,15 +25,14 @@ include_once '../PRJ_Library/header.php';
 
 include_once '../PRJ_Library/connect_DB.php';
 ?>
-<div style="background-color:#fff ">
-    <div class="container" style="padding-bottom: 10%;">
+<div style="background-color:#cccccc; ">
+    <div class="container" style="padding-bottom: 5%;">
         <div class="row">
-            <div class="col-sm-3" style="padding-top: 10%;">
+            <div class="col-sm-3" style="padding-top: 5%;">
                 <ul>
                     <li><button id="bt_profile"><i class="fa fa-eye" style="color: black;"></i>Thông tin tài khoản</button></li>
                     <li><button id="bt_invoice">Quản lí đơn hàng</button></li>
                     <li><a id="bt_notice" href="">Thông báo</a></li>
-                    <li><a id="bt_logout" href="">Đăng xuất</a></li>
                 </ul>     
             </div>
             
@@ -57,7 +56,7 @@ include_once '../PRJ_Library/connect_DB.php';
                 $num = mysqli_num_rows($result3);
                
                 ?>
-                <div class="col-sm-8" style="margin-top: 10%; background-color: white; text-align: center; border-radius:5px; ">
+                <div class="col-sm-8" style="background-color: white; text-align: center; border-radius:5px; ">
                     <table class="table table-striped">
                     <thead id="initial_invoice">
                         <?php

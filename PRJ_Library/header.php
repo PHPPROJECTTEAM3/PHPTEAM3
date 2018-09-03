@@ -76,19 +76,24 @@ include_once '../PRJ_Library/connect_DB.php';
             <div class="col-sm-8">
                 <p>PHPMOBILE@GMAIL.COM - Hotline:1900 9090</p>
             </div>
-            <div class="col-sm-3 <?php if($activeMenu == 'taikhoan'){echo 'active';}?>" style="padding-left: 9%;">
+            <div class="col-sm-3 <?php if($activeMenu == 'taikhoan'){echo 'active';}?>">
                 
                 <?php
                     if(isset($_SESSION["username"]))
                     {
                 ?>
-                <div style="padding-top: 5%;">
+                <div style="padding-top: 4%;">
                                         <i class="glyphicon glyphicon-user" style="font-size: 18px;"></i>
-                                        <a href="user.php" style="padding-top: 6%; padding-left: 13%; color: white;">
+                                        <a href="quanlytaikhoan.php" style="padding-left: 8%; color: white;">
                                             <?php
                                             echo "Chào ".$_SESSION["username"];
                                             ?>
                                              
+                                        </a>
+                                        <a href="quanlytaikhoan.php" style="padding-left: 1%; color: white;">
+                                            <?php
+                                            echo "Đăng Xuất"
+                                            ?>
                                         </a>
                                     </div>
                 <?php
@@ -96,7 +101,7 @@ include_once '../PRJ_Library/connect_DB.php';
                 ?>
                     <div href="" onclick="document.getElementById('modal-wrapper').style.display='block'">
                                         <i class="glyphicon glyphicon-user" style="font-size: 18px;"></i>
-                                        <div style="padding-top: 6%; padding-left: 13%; color: white;">
+                                        <div style="padding-top: 4%; padding-left: 9%; color: white;">
                                             Tài Khoản
                                         </div>
                                     </div>
