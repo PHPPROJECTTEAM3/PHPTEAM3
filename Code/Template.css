@@ -307,52 +307,49 @@ input::-webkit-search-cancel-button {
 }
 
 /* danh muc san pham */
-.danhmuc{
-    margin-top: 2%;
-    text-align: center;
-}
-.danhmuc a{
-    color: black;
-}
-.danhmuc :hover{
-    transform: scale(1.1); 
-}
-.danhmuc a:hover{
-    text-decoration: none;
+.dropbtn {
+    background-color: #c6716c;
     color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
 }
-.danhmuc1{
-    background-color: green;
-    padding-left: 1%;
-    width: 50%;
-    height: 50%;
-    color: #333333;
-    border-radius: 30px;
+
+.dropdown {
+    position: relative;
+    display: inline-block;
 }
-.danhmuc2{
-    background-color: red;
-    padding-left: 1%;
-    width: 50%;
-    height: 50%;
-    color: #333333;
-    border-radius: 30px;
+.dropdown a{
+text-decoration: none;
+color: white;
 }
-.danhmuc3{
-    background-color: blue;
-    padding-left: 1%;
-    width: 50%;
-    height: 50%;
-    color: #333333;
-    border-radius: 30px;
+.dropdown a:hover{
+text-decoration: none;
+color: white;
 }
-.danhmuc4{
-    background-color: yellow;
-    padding-left: 1%;
-    width: 50%;
-    height: 50%;
-    color: #333333;
-    border-radius: 30px;
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: blanchedalmond;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
 }
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: antiquewhite;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: burlywood;}
+
 /*phần tìm kiem*/
 .search-box {
     position: initial;

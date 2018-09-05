@@ -84,6 +84,7 @@ include_once '../PRJ_Library/connect_DB.php';
                                 <thead>      
                                     <tr>            
                                         <td><h3>Mã Đơn Hàng: <?php echo $col[1]; ?></h3></td>
+                                        <td><div style="margin-top:24%;"><a href="#" class="btn-success">Hủy Đơn Hàng</a></div></td>
                                     </tr>
                                     <tr>
                                         <th>STT</th>
