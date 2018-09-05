@@ -11,7 +11,8 @@ if (!(isset($_SESSION["admin"]) && isset($_SESSION["role"]))) {
         <title></title>
     </head>
     <body>
-        <h2>Add Versions</h2><hr/>
+        <h2>Add Versions</h2>
+        <p><a href="admin_manage_version.php">Back to Manage Versions</a></p><hr/>
         <form>
             <p>Name Version</p>
             <input name="name_ver" type="text" maxlenght="30" required>

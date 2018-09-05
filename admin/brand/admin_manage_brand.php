@@ -18,7 +18,7 @@ $result = mysqli_query($link, $query);
     <body>
 
         <form method="get">
-            <h2>Invoice List</h2>
+            <h2>Brand List</h2>
             <button name="bt_log_out">Log Out</button>
             <hr/>   
         </form>

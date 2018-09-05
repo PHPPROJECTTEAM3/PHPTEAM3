@@ -52,81 +52,76 @@ include_once '../PRJ_Library/connect_DB.php';
                 $query3 = "SELECT `ac_name`,`ID` FROM `invoice` WHERE ac_name= '$acc'";
                 $result3 = mysqli_query($link, $query3);
                 $num = mysqli_num_rows($result3); //Xuất ra thông báo nếu ko có đơn
-                if($num == 0)
-                {
+                if ($num == 0) {
                     echo " <div id='initial_invoice'>";
                     echo "<table class='table table-striped'>";
-                    
-                    echo '<thead>';   
-
-                              echo '<tr>' ;           
-                                 echo  '<td><h3>Mã Đơn Hàng: 0 </h3></td>';
-                              echo '</tr>';
-                              echo '<tr>';
-                                echo   '<th>STT</th>';
-                                 echo  '<th>Hình Ảnh</th>';
-                                echo    '<th>Mã Sản Phẩm</th>';
-                                echo    '<th>Tên Sản phẩm</th>';
-                                echo    '<th>Số Lượng</th>';
-                                 echo   '<th>Tổng Tiền</th>';
-                               echo '</tr>';
-
-                            echo '</thead>';
-                            
-                            echo '<tr><td><h4>Không Có Hóa Đơn</h4></td></tr>';
-                            echo '</table>';
-                            echo '</div>';
+                    echo '<thead>';
+                    echo '<tr>';
+                    echo '<td><h3>Mã Đơn Hàng: 0 </h3></td>';
+                    echo '</tr>';
+                    echo '<tr>';
+                    echo '<th>STT</th>';
+                    echo '<th>Hình Ảnh</th>';
+                    echo '<th>Mã Sản Phẩm</th>';
+                    echo '<th>Tên Sản phẩm</th>';
+                    echo '<th>Số Lượng</th>';
+                    echo '<th>Tổng Tiền</th>';
+                    echo '</tr>';
+                    echo '</thead>';
+                    echo '<tr><td><h4>Không Có Hóa Đơn</h4></td></tr>';
+                    echo '</table>';
+                    echo '</div>';
                 }
-                
-                while ($col = mysqli_fetch_array($result3)) {
-                    $num = mysqli_num_rows($result3);
-                    
-                    $count = 1;
-                    ?>
-                    <div id="initial_invoice">              
-                        <table class="table table-striped">
+                ?>
+                <div id="initial_invoice">       
+                        <?php
+                        while ($col = mysqli_fetch_array($result3)) {
+                            $num = mysqli_num_rows($result3);
 
-                            <thead>      
+                            $count = 1;
+                            ?>
+                            <table class="table table-striped">
+                                <thead>      
+                                    <tr>            
+                                        <td><h3>Mã Đơn Hàng: <?php echo $col[1]; ?></h3></td>
+                                    </tr>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Hình Ảnh</th>
+                                        <th>Mã Sản Phẩm</th>
+                                        <th>Tên Sản phẩm</th>
+                                        <th>Số Lượng</th>
+                                        <th>Tổng Tiền</th>
+                                    </tr>
 
-                                <tr>            
-                                    <td><h3>Mã Đơn Hàng: <?php echo $col[1]; ?></h3></td>
-                                </tr>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Hình Ảnh</th>
-                                    <th>Mã Sản Phẩm</th>
-                                    <th>Tên Sản phẩm</th>
-                                    <th>Số Lượng</th>
-                                    <th>Tổng Tiền</th>
-                                </tr>
-
-                            </thead>
-
+                                </thead>
 
 
-                            <?php
-                            $query4 = " SELECT detail_invoice.img, detail_invoice.ID_Pro,detail_invoice.Name_pro,detail_invoice.Quantity_pro,detail_invoice.total 
+
+                                <?php
+                                $query4 = " SELECT detail_invoice.img, detail_invoice.ID_Pro,detail_invoice.Name_pro,detail_invoice.Quantity_pro,detail_invoice.total 
                     FROM detail_invoice , invoice 
                     WHERE invoice.ID = detail_invoice.ID_Invoice AND invoice.ac_name ='$col[0]' AND invoice.ID =$col[1]";
-                            $result4 = mysqli_query($link, $query4);
-                            while ($col2 = mysqli_fetch_array($result4)) {
-                                ?>
-                                <tbody>
-                                    <tr>
+                                $result4 = mysqli_query($link, $query4);
+                                while ($col2 = mysqli_fetch_array($result4)) {
+                                    ?>
+                                    <tbody>
+                                        <tr>
 
-                                        <td><a href="#" class="listchr"><?php echo $count ?></a></td>
-                                        <td><a href="#" class="listchr"><?php echo $col2[0] ?></a></td>
-                                        <td><a href="#" class="listchr"><?php echo $col2[1] ?></a></td>
-                                        <td><a href="#" class="listchr"><?php echo $col2[2] ?></a></td>
-                                        <td><a href="#" class="listchr"><?php echo $col2[3] ?></a></td>
-                                        <td><a href="#" class="listchr"><?php echo $col2[4] ?></a></td>
-                                    </tr>
-                                </tbody> 
-                                <?php $count++;
-                            }
-                            ?>
-                        </table>
-                </div>
+                                            <td><a href="#" class="listchr"><?php echo $count ?></a></td>
+                                            <td><a href="#" class="listchr"><?php echo $col2[0] ?></a></td>
+                                            <td><a href="#" class="listchr"><?php echo $col2[1] ?></a></td>
+                                            <td><a href="#" class="listchr"><?php echo $col2[2] ?></a></td>
+                                            <td><a href="#" class="listchr"><?php echo $col2[3] ?></a></td>
+                                            <td><a href="#" class="listchr"><?php echo $col2[4] ?></a></td>
+                                        </tr>
+                                    </tbody> 
+                                    <?php
+                                    $count++;
+                                }
+                                ?>
+                            </table>
+                    </div>
                 <?php } ?>
                 <!-- End Hóa Đơn -->
 
@@ -178,75 +173,74 @@ include_once '../PRJ_Library/connect_DB.php';
                                     <td><p><strong>Mức Độ Tin Cậy:</strong> <?php echo $col[8] ?></p></td>
                                 </tr>
                                 <tr>      
-                                    <td><input name="bt_profile" type="submit" value="Cập Nhật Thông Tin"></td>
+                                    <td><input name="bt_profile" type="submit" value="Cập Nhật Thông Tin" ></td>
                                 </tr>
                             </tbody>
                         </table>
                     </form> <!-- Thông Tin Tài Khoản -->
+
+                    <FORM>
+                        <INPUT TYPE="button" onClick="history.go(0)" VALUE="Refresh">
+                    </FORM>
                     <?php
-if (isset($_POST["bt_profile"])) {
-    $l_name = $_POST["L_Name_profile"];
-    $f_name = $_POST["F_Name_profile"];
-    $phone_ = $_POST["Phone_profile"];
-    $email_ = $_POST["Email_profile"];
-    $gender_ = $_POST["Gender_profile"];
-    $Dob_ = $_POST["Dob_profile"];
+                    if (isset($_POST["bt_profile"])) {
+                        $l_name = $_POST["L_Name_profile"];
+                        $f_name = $_POST["F_Name_profile"];
+                        $phone_ = $_POST["Phone_profile"];
+                        $email_ = $_POST["Email_profile"];
+                        $gender_ = $_POST["Gender_profile"];
+                        $Dob_ = $_POST["Dob_profile"];
 
-    $query2 = "UPDATE `member` SET `l_name`='$l_name',`f_name`='$f_name',`mail`='$email_',`phone`= $phone_,`gender`= '$gender_',`date_birth`= '$Dob_' WHERE acc like '$acc'";
-    $result2 = mysqli_query($link, $query2);
-    if($result2 != false)
-    {
-     echo '<h2>Cập Nhật Thành Công</h2>';
-    } else {
-           echo '<h2>Cập Nhật Thất Bại</h2>';
-    }   
-}
-?>
+                        $query2 = "UPDATE `member` SET `l_name`='$l_name',`f_name`='$f_name',`mail`='$email_',`phone`= $phone_,`gender`= '$gender_',`date_birth`= '$Dob_' WHERE acc like '$acc'";
+                        $result2 = mysqli_query($link, $query2);
+                        if ($result2 != false) {
+                            echo '<h2>Cập Nhật Thành Công</h2>';
+                        } else {
+                            echo '<h2>Cập Nhật Thất Bại</h2>';
+                        }
+                    }
+                    ?>
                 </div>
-
-                <script language="javascript">
-                    //Hide Hóa Đơn
-                    $("#initial_invoice").hide();
-               
-
-                    // function Hóa Đơn
-                    $(document).ready(function () {
-                        $("#bt_invoice").click(function () {
-                            $("#initial_invoice").toggle();
-
-                            $("#profile").hide();
-                        
-                        });
-
-                        //function Profile
-
-                        $("#bt_profile").click(function () {
-                            $("#profile").toggle();
-                          
-                            $("#initial_invoice").hide();
-
-                        });
-                    }); //End $(document).ready function
-                </script>
-
+            </div>          
 <!--<tbody>
-<?php foreach ($result as $key => $item) { ?>
+            <?php foreach ($result as $key => $item) { ?>
             <tr>
             <td><a href="#" class="listchr"><?php echo $key + 1; ?></a></td>
             <td><a href="#" class="listchr"><?php echo "$item[namechurch]" ?></a></td>
             </tr>
-<?php } ?>
+            <?php } ?>
 </tbody>  -->
-
-            </div>
-
-
 
         </div>
     </div>
 </div>
+</div>
 
 
+<script language="javascript">
+    //Hide Hóa Đơn
+    $("#initial_invoice").hide();
+
+
+    // function Hóa Đơn
+    $(document).ready(function () {
+        $("#bt_invoice").click(function () {
+            $("#initial_invoice").toggle();
+
+            $("#profile").hide();
+
+        });
+
+        //function Profile
+
+        $("#bt_profile").click(function () {
+            $("#profile").toggle();
+
+            $("#initial_invoice").hide();
+
+        });
+    }); //End $(document).ready function
+</script>
 
 
 <?php

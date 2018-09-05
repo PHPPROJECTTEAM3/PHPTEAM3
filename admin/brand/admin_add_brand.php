@@ -1,4 +1,4 @@
-<?php
+    <?php
 session_start();
 if (!(isset($_SESSION["admin"]) && isset($_SESSION["role"]))) {
     header("location:../admin_log_in.php");
@@ -37,5 +37,6 @@ if (!(isset($_SESSION["admin"]) && isset($_SESSION["role"]))) {
             }
         }
         ?>
+        <p><a href="admin_manage_brand.php">Back to Manage Brand</a></p>
     </body>
 </html>

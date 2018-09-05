@@ -30,7 +30,7 @@ if(isset($_GET["bt_order"]))
     $total_invoice = $_GET["total_invoice"];
     $note = $_GET["note_cus"];
 }
-$query = "INSERT INTO `invoice`(`ac_name`, `total`, `note` , `date_or`, `date_re`) VALUES ('$acc_name',' $total_invoice','$note','$date_or','$date_re')";
+$query = "INSERT INTO `invoice`(`ac_name`, `total`, `note` , `date_or`, `date_re`,`status`) VALUES ('$acc_name',' $total_invoice','$note','$date_or','$date_re','Chờ Xác Nhận')";
 $result = mysqli_query($link, $query);
 if(!$result)
 {
