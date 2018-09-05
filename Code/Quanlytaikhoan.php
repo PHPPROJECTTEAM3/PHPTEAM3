@@ -92,6 +92,7 @@ include_once '../PRJ_Library/connect_DB.php';
                                         <th>Tên Sản phẩm</th>
                                         <th>Số Lượng</th>
                                         <th>Tổng Tiền</th>
+                                        
                                     </tr>
 
                                 </thead>
@@ -100,8 +101,8 @@ include_once '../PRJ_Library/connect_DB.php';
 
                                 <?php
                                 $query4 = " SELECT detail_invoice.img, detail_invoice.ID_Pro,detail_invoice.Name_pro,detail_invoice.Quantity_pro,detail_invoice.total 
-                    FROM detail_invoice , invoice 
-                    WHERE invoice.ID = detail_invoice.ID_Invoice AND invoice.ac_name ='$col[0]' AND invoice.ID =$col[1]";
+                                FROM detail_invoice , invoice 
+                                WHERE invoice.ID = detail_invoice.ID_Invoice AND invoice.ac_name ='$col[0]' AND invoice.ID =$col[1]";
                                 $result4 = mysqli_query($link, $query4);
                                 while ($col2 = mysqli_fetch_array($result4)) {
                                     ?>
@@ -121,8 +122,9 @@ include_once '../PRJ_Library/connect_DB.php';
                                 }
                                 ?>
                             </table>
+                     <?php } ?>
                     </div>
-                <?php } ?>
+               
                 <!-- End Hóa Đơn -->
 
 
@@ -179,9 +181,7 @@ include_once '../PRJ_Library/connect_DB.php';
                         </table>
                     </form> <!-- Thông Tin Tài Khoản -->
 
-                    <FORM>
-                        <INPUT TYPE="button" onClick="history.go(0)" VALUE="Refresh">
-                    </FORM>
+                    
                     <?php
                     if (isset($_POST["bt_profile"])) {
                         $l_name = $_POST["L_Name_profile"];
