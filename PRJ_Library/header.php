@@ -8,7 +8,7 @@ include_once '../PRJ_Library/connect_DB.php';
 <html>
 
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8"> 
         <title><?php echo $pageTitle ?></title>
         <link href="Template.css" rel="stylesheet" type="text/css"/>
         <!--<script src='http://code.jquery.com/jquery-2.1.4.min.js'></script>-->
@@ -66,6 +66,7 @@ include_once '../PRJ_Library/connect_DB.php';
         $('#txtSearch').on('typeahead:cursorchanged', function (e, datum) {
     console.log(datum);
 });
+
             </script>
     </head>
     <body>
@@ -76,32 +77,28 @@ include_once '../PRJ_Library/connect_DB.php';
             <div class="col-sm-8">
                 <p>PHPMOBILE@GMAIL.COM - Hotline:1900 9090</p>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-3 <?php if($activeMenu == 'taikhoan'){echo 'active';}?>">
                 
                 <?php
                     if(isset($_SESSION["username"]))
                     {
                 ?>
-                <div style="padding-top: 4%;">
+                <div id="logout" style="padding-top: 4%;">
                                         <i class="glyphicon glyphicon-user" style="font-size: 18px;"></i>
                                         <a href="quanlytaikhoan.php" style="padding-left: 8%; color: white;">
                                             <?php
                                             echo "Chào ".$_SESSION["username"];
+                                            
                                             ?>
                                              
                                         </a>
-                                        
                                         <a style="color: white;">
                                             <?php
                                             echo "|"
                                             ?>
                                         </a>
-                                        
-                                        <a href="" style="padding-left: 1%; color: white;">
-                                            <?php
-                                            echo "Đăng Xuất"
-                                            ?>
-                                        </a>
+                                        <a id="bt_logout" name="bt_logout" href="log_out_user.php" style="padding-left: 1%; color: white;">Đăng Xuất</a>
+                                    
                                     </div>
                 <?php
                     }else{
@@ -209,7 +206,7 @@ include_once '../PRJ_Library/connect_DB.php';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#" class="navbar-logo">
+                <a href="Home.php" class="navbar-logo">
                     <img style="height: 50px; display: inline-block;"
                          src="../Images/Thegioididong-icon.png" usemap="#Map" border="0">
                 </a>
@@ -244,7 +241,17 @@ include_once '../PRJ_Library/connect_DB.php';
                         <button class="cart-form-button" id="cart">
                         <span class="glyphicon glyphicon-shopping-cart" style="font-size: 18px;"></span>
                         </button>
-                            <span class="cart-item-quality">0</span>
+                            <span class="cart-item-quality"><?php
+                                        $count=0;
+                                        if(isset($_SESSION["cartuser"]))
+                                        {
+                                            foreach ($_SESSION["cartuser"] as $ID=>$SP)
+                                            {
+                                            $count += $SP->proAmount;
+                                            }
+                                        }
+                                        echo $count;
+                                        ?></span>
                         </a>
 
 
