@@ -513,6 +513,32 @@ color: white;
     color: goldenrod;
 }
 
+/*feedback*/
+.fed{
+    border-radius: 5px;
+    padding-bottom: 1%;
+    margin-bottom: 5%;
+    text-align: center;
+}
+.fed:focus{
+    outline:0;
+}
+.fedb{
+    border:1px solid #ddd;
+    border-radius: 3px;
+    margin-bottom: 21px;
+    padding: 14px 14px 10px;
+    display: inline-block;
+}
+.subfed{
+    background-color: #09afdf;
+    border-color: #09afdf;
+    color: #fff;
+    width: 100%;
+    line-height: 3rem;
+}
+
+
 
 /*view moblie*/
 @media (max-width: 767px) {
