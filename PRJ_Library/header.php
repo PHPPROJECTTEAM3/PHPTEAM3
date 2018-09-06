@@ -220,7 +220,9 @@ include_once '../PRJ_Library/connect_DB.php';
                         <a href="Home.php">Trang Chủ </a>
 
                     </li>
-                    <li><a href="">Giới Thiệu</a></li>
+                    <li class="<?php if($activeMenu == 'GioiThieu'){echo 'active';}?>">
+                        <a href="GioiThieu.php">Giới Thiệu</a>
+                    </li>
                     <li class="<?php if($activeMenu == 'LienHe'){echo 'active';}?>">
                         <a href="LienHe.php">Liên Hệ</a>
                     </li>
