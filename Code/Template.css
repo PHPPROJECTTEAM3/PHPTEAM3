@@ -453,7 +453,7 @@ color: white;
 
     background: #110000;
 
-    color: goldenrod;
+    color: lightsteelblue;
 }
 .detailsmb i{
         font-size: 15px;
@@ -462,7 +462,7 @@ color: white;
     padding-right: 5px;
 }
 .mobile:hover{
-    background-color: /*#105268*/goldenrod;
+    background-color: /*#105268*/#09afdf;
     color: white;
     transition: all 0.3s ease 0s;
     transform: scale(1.1); 

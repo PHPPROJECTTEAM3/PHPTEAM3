@@ -262,8 +262,9 @@ include_once '../PRJ_Library/connect_DB.php';
 
             </div>
         </div><!-- /.container-fluid -->
+        
     </nav>
 
-
 </div>
-        <div style="background-color: #cccccc">
+     <hr style="opacity: 0.0; margin-top: -1%;"/>   
+        <div style="background-color: #fff">
