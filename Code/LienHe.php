@@ -4,6 +4,9 @@ $activeMenu = "LienHe";
 include_once '../PRJ_Library/header.php';
 ?>
 
+
+
+<div style="margin-top: 5%; margin-bottom: 5%;">
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
@@ -38,7 +41,7 @@ include_once '../PRJ_Library/header.php';
         </div>
     </div>
 </div>
-    
+</div>    
     
     
     
