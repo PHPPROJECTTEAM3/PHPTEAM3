@@ -36,7 +36,7 @@ $current_id = $row[0];
     </head>
     <body>
         
-        <h2>Edit Product</h2>
+        <h2>Edit Product ID: <?php echo $id ?></h2>
         <hr/>
         <form method="GET" action="edit_pro.php">
             <input type="hidden" name="current_ID" value="<?php echo $current_id ?>" readonly="">
@@ -47,20 +47,21 @@ $current_id = $row[0];
             <p>Brand Name</p>
             <select name="brand_pro" >
                 <?php
-                echo "<option value='default'>$row[2](default)</option>";
+                echo "<option value='$row[2]'>$row[2](default)</option>";
                 while ($row2 = mysqli_fetch_array($result2)) {
                     echo "<option value='$row2[0]'>$row2[0]</option>";
                 }
                 ?>
             </select>
             <p>Current Image</p>
-            <img src="<?php echo '../../../Image/'.$row[3] ?>" width=200px height=150px><input name="current_image_pro" type="hidden" value="<?php echo $row[3] ?>">
+          
+            <img src="<?php echo "../../Images/$row[name_brand]/$row[img]" ?>" width=200px height=150px><input name="current_image_pro" type="hidden" value="<?php echo $row[3] ?>">
              <p>New Image</p>
             <input name="new_image_pro" type="file" >
             <p>Version</p>
             <select name="ver_pro">
                 <?php
-                echo"<option value='default'>$row[4](default)</option>";
+                echo"<option value='$row[4]'>$row[4](default)</option>";
                 while ($row3 = mysqli_fetch_array($result3)) {
                     echo "<option value='$row3[0]'>$row3[0]</option>";
                 }

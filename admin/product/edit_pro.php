@@ -31,7 +31,7 @@ if (!(isset($_SESSION["admin"]) && isset($_SESSION["role"]))) {
             $query = "UPDATE `product` SET `ID`=$id_pro,`name`='$name_pro',`name_brand`='$brand_pro',`img`='$image_pro',`ver`='$ver_pro',`price`=$price_pro,`a_s`=$a_s_pro,`L_Date`='$l_date_pro' WHERE ID=$current_ID ";
             $result = mysqli_query($link, $query);
             
-            if(!($result))
+            if(!$result)
             {
                 die("Edit Faile !!!!");
             }

@@ -16,22 +16,20 @@ $result = mysqli_query($link, $query);
         <title></title>
     </head>
     <body>
-        <form method="get">
-            <h2>Version List</h2>
-            <button name="bt_log_out">Log Out</button>
+       <h2>Version List</h2>
+             <div style="overflow: hidden">
+                <div style="float: left"> 
+                    <a href="../product/admin_manage_product.php" style="text-decoration: none" >Back to Manage Product</a>
+            </div>
+                <div style="float: right; margin-right: 20px">
+                    <a href="../admin_log_out.php" style="text-decoration: none;">Log Out</a>
+                </div> 
+            </div>
             <hr/>   
-        </form>
-        <?php
-        if (isset($_GET["bt_log_out"])) {
-            unset($_SESSION["admin"]);
-            header("location:../admin_log_in.php");
-            mysqli_close($link);
-            exit();
-        }
-        ?>
+
 
         <form
-            <p><input name="back_product_list" type="submit" value="Back To Product List">
+            <p>
                 <input name="bt_add" type="submit" value="Add Version"></p>
         </form>
         <?php
@@ -39,18 +37,13 @@ $result = mysqli_query($link, $query);
             header("location:admin_add_version.php");
             exit();
         }
-        if (isset($_GET["back_product_list"])) {
-            header("location:../product/admin_manage_product.php");
-            mysqli_close($link);
-            exit();
-        }
         ?>
-
-    <table border="2">
+    
+    <center><table border="2">
         <tr>
-            <th>Name Version</th>
-            <th>File PDF</th>
-            <th colspan="2">....</th>
+            <th style="width: 20%">Name Version</th>
+            <th style="width: 20%">File PDF</th>
+            <th style="width: 10%"  colspan="2">....</th>
         </tr>
          <?php
         if (mysqli_num_rows($result) == 0) {
@@ -62,16 +55,16 @@ $result = mysqli_query($link, $query);
 <?php
 while ($row = mysqli_fetch_array($result)) {
     echo "<tr>";
-    echo "<td>$row[0]</td>";
-    echo "<td>$row[1]</td>";
-    echo "<td><a href='admin_edit_version?id=$row[0]'>Edit</a></td>";
-    echo "<td><a href='admin_delete_version.php?id=$row[0]'onclick=\"javascript: return confirm('Are you sure?');\">Delete</a></td>";
+    echo "<td><center>$row[0]</center></td>";
+    echo "<td><center>$row[1]</center></td>";
+    echo "<td><center><a href='admin_edit_version?id=$row[0]'>Edit</a></center></td>";
+    echo "<td><center><a href='admin_delete_version.php?id=$row[0]' onclick=\"javascript: return confirm('Are you sure?');\">Delete</a></center></td>";
     echo "</tr>";
 }
 mysqli_close($link);
 ?>
         
-    </table>
+        </table></center>
       
     </body>
 </html>

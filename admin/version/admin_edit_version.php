@@ -23,8 +23,16 @@ $row = mysqli_fetch_array($result);
         <title></title>
     </head>
     <body>
-        <h2>Edit Version</h2>
-        <p><a href="admin_manage_version.php">Back to Manage Versions</a></p><hr/>
+       <h2>Edit Version</h2>
+             <div style="overflow: hidden">
+                <div style="float: left"> 
+                    <a href="admin_manage_version.php" style="text-decoration: none" >Back to Manage Version</a>
+            </div>
+                <div style="float: right; margin-right: 20px">
+                    <a href="../admin_log_out.php" style="text-decoration: none;">Log Out</a>
+                </div> 
+            </div>
+            <hr/>   
         <form method="get" action="edit_version.php">
             <p>Current Version Name</p>
             <p><input type="text" readonly value="<?php echo $row[0] ;?>"  name="current_version"></p>

@@ -33,7 +33,8 @@ if (isset($_GET["bt_edit"])) {
         die("Edit Faile !!!");
     }
     header("location:admin_manage_brand.php");
-     exit();
+  
             mysqli_close($link);
+               exit();
 }
 ?>

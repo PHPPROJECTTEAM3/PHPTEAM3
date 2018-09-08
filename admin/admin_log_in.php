@@ -51,12 +51,18 @@ session_start();
                 $row = mysqli_fetch_array($result);
                 $_SESSION["admin"]=$row[0];
                 $_SESSION["role"]=$row[2];
-                header("location:./product/admin_manage_product.php");
-        
-                
-                mysqli_close($link);
-                 exit();
-               
+                if($_SESSION["role"]==1)
+                {
+                    header("location:./admin_account/admin_manage_admin.php");                   
+                   mysqli_close($link);
+                    exit();
+                    
+                } else {
+                     header("location:./product/admin_manage_product.php");
+                      mysqli_close($link);
+                      exit();
+                }
+                exit();
             }
         }       
         ?>
