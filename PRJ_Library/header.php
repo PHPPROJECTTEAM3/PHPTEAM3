@@ -15,6 +15,7 @@ include_once '../PRJ_Library/connect_DB.php';
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <link href="../Code/dangkydangnhap.css" rel="stylesheet" type="text/css"/>
+        <link href="../Code/thongtinsanpham.css" rel="stylesheet" type="text/css"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"> 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">

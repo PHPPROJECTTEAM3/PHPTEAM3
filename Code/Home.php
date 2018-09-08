@@ -145,7 +145,7 @@ while ($col = mysqli_fetch_array($result)) {
                             <div class="phone">
                                 <img width="120px" height="150px" src="<?php echo "../Images/$col[2]/$col[img]"; ?>"/>
                                 <div class="overlay"><!--hover xem chi tiet-->
-                                    <a href="#" class="detailsmb">
+                                    <a href="<?php echo "Thongtinsanpham.php?ID=$col[0]" ?>" class="detailsmb">
                                         <i class="fa fa-eye"></i>
                                     </a><br/>
     <?php
@@ -156,16 +156,33 @@ while ($col = mysqli_fetch_array($result)) {
                                 </div>
                             </div>
                             <h5><?php echo "$col[name]"; ?></h5>
-                            <span><?php echo "$col[price]₫"; ?></span>
+                            <?php 
+                            $leght = strlen($col[5]);
+                    $price = 0;
+                    if ($leght == 7) {
+                        $add = substr_replace($col[5], '.', 1, 0);
+                        $add2 = substr_replace($add, '.', 5, 0);
+                        $price = $add2;
+                    }
+                    if ($leght == 8) {
+                        $add = substr_replace($col[5], '.', 2, 0);
+                        $add2 = substr_replace($add, '.', 6, 0);
+                        $price = $add2;
+                    }
+                            ?>
+                            <span><strong><?php echo $price ?>₫</strong></span>
                         </div>
                     </div>
 
                 </div>
 
+            
+    
     <?php $count++;
 } ?>
         </div>
     </div>
+    
 </div>
 
 
