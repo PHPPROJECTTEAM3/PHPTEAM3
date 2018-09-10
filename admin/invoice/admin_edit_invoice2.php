@@ -8,8 +8,12 @@ if(isset($_GET["bt_edit_invoice"]))
     $date_re = $_GET["date_re"];
     $deposit = $_GET["deposit"];
     $status = $_GET["status"];
+    $admin_confirm = $_GET["admin_confirm"];
+    $date_time_or = $_GET["date_time_or"];
+    $es_date_re = $_GET["es_date_re"];
     
-    $query = "UPDATE `invoice` SET `ac_name`='$account',`note`='$note',`date_re`='$date_re',`deposit`='$deposit',`status`='$status' WHERE `ID` = $id_invoice";
+            
+    $query = "UPDATE `invoice` SET `ac_name`='$account',`note`='$note' ,`date_or`='$date_time_or',`es_date_re`='$es_date_re',`deposit`='$deposit',`status`='$status', `admin_comfirm` = '$admin_confirm',`Date_Re`= '$date_re' WHERE `ID` = $id_invoice";
     $result = mysqli_query($link, $query);
     
     if($result)

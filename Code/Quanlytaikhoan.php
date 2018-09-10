@@ -74,58 +74,72 @@ include_once '../PRJ_Library/connect_DB.php';
                 }
                 ?>
                 <div id="initial_invoice">       
-                        <?php
-                        while ($col = mysqli_fetch_array($result3)) {
-                            $num = mysqli_num_rows($result3);
+                    <?php
+                    while ($col = mysqli_fetch_array($result3)) {
+                        $num = mysqli_num_rows($result3);
 
-                            $count = 1;
-                            ?>
-                            <table class="table table-striped">
-                                <thead>      
-                                    <tr>            
-                                        <td><h3>Mã Đơn Hàng: <?php echo $col[1]; ?></h3></td>
-                                        <td><div style="margin-top:24%;"><a href="#" class="btn-success">Hủy Đơn Hàng</a></div></td>
-                                    </tr>
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>Hình Ảnh</th>
-                                        <th>Mã Sản Phẩm</th>
-                                        <th>Tên Sản phẩm</th>
-                                        <th>Số Lượng</th>
-                                        <th>Tổng Tiền</th>
-                                        
-                                    </tr>
+                        $count = 1;
+                        ?>
+                        <table class="table table-striped">
+                            <thead>      
+                                <tr>            
+                                    <td><h3>Mã Đơn Hàng: <?php echo $col[1]; ?></h3></td>
+                                    <td><div style="margin-top:24%;"><a href="#" class="btn-success">Hủy Đơn Hàng</a></div></td>
+                                </tr>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Hình Ảnh</th>
+                                    <th>Mã Sản Phẩm</th>
+                                    <th>Tên Sản phẩm</th>
+                                    <th>Số Lượng</th>
+                                    <th>Tổng Tiền</th>
 
-                                </thead>
+                                </tr>
+
+                            </thead>
 
 
 
-                                <?php
-                                $query4 = " SELECT detail_invoice.img, detail_invoice.ID_Pro,detail_invoice.Name_pro,detail_invoice.Quantity_pro,detail_invoice.total 
+                            <?php
+                            $query4 = " SELECT detail_invoice.img, detail_invoice.ID_Pro,detail_invoice.Name_pro,detail_invoice.Quantity_pro,detail_invoice.total 
                                 FROM detail_invoice , invoice 
                                 WHERE invoice.ID = detail_invoice.ID_Invoice AND invoice.ac_name ='$col[0]' AND invoice.ID =$col[1]";
-                                $result4 = mysqli_query($link, $query4);
-                                while ($col2 = mysqli_fetch_array($result4)) {
-                                    ?>
-                                    <tbody>
-                                        <tr>
-
-                                            <td><a href="#" class="listchr"><?php echo $count ?></a></td>
-                                            <td><a href="#" class="listchr"><?php echo $col2[0] ?></a></td>
-                                            <td><a href="#" class="listchr"><?php echo $col2[1] ?></a></td>
-                                            <td><a href="#" class="listchr"><?php echo $col2[2] ?></a></td>
-                                            <td><a href="#" class="listchr"><?php echo $col2[3] ?></a></td>
-                                            <td><a href="#" class="listchr"><?php echo $col2[4] ?></a></td>
-                                        </tr>
-                                    </tbody> 
-                                    <?php
-                                    $count++;
-                                }
+                            $result4 = mysqli_query($link, $query4);
+                            while ($col2 = mysqli_fetch_array($result4)) {
                                 ?>
-                            </table>
-                     <?php } ?>
-                    </div>
-               
+                                <tbody>
+                                    <tr>
+
+                                        <td><a href="#" class="listchr"><?php echo $count ?></a></td>
+                                        <td><a href="#" class="listchr"><?php echo $col2[0] ?></a></td>
+                                        <td><a href="#" class="listchr"><?php echo $col2[1] ?></a></td>
+                                        <td><a href="#" class="listchr"><?php echo $col2[2] ?></a></td>
+                                        <td><a href="#" class="listchr"><?php echo $col2[3] ?></a></td>
+                                        <?php
+                                        $leght = strlen($col2[4]);
+                                        $price = 0;
+                                        if ($leght == 7) {
+                                            $add = substr_replace($col2[4], '.', 1, 0);
+                                            $add2 = substr_replace($add, '.', 5, 0);
+                                            $price = $add2;
+                                        }
+                                        if ($leght == 8) {
+                                            $add = substr_replace($col2[4], '.', 2, 0);
+                                            $add2 = substr_replace($add, '.', 6, 0);
+                                            $price = $add2;
+                                        }
+                                        ?>
+                                        <td><a href="#" class="listchr" style="color: #c1000c"><?php echo $price ?>₫</a></td>
+                                    </tr>
+                                </tbody> 
+                                <?php
+                                $count++;
+                            }
+                            ?>
+                        </table>
+                    <?php } ?>
+                </div>
+
                 <!-- End Hóa Đơn -->
 
 
@@ -182,7 +196,7 @@ include_once '../PRJ_Library/connect_DB.php';
                         </table>
                     </form> <!-- Thông Tin Tài Khoản -->
 
-                    
+
                     <?php
                     if (isset($_POST["bt_profile"])) {
                         $l_name = $_POST["L_Name_profile"];
@@ -205,10 +219,10 @@ include_once '../PRJ_Library/connect_DB.php';
             </div>          
 <!--<tbody>
             <?php foreach ($result as $key => $item) { ?>
-            <tr>
-            <td><a href="#" class="listchr"><?php echo $key + 1; ?></a></td>
-            <td><a href="#" class="listchr"><?php echo "$item[namechurch]" ?></a></td>
-            </tr>
+                <tr>
+                <td><a href="#" class="listchr"><?php echo $key + 1; ?></a></td>
+                <td><a href="#" class="listchr"><?php echo "$item[namechurch]" ?></a></td>
+                </tr>
             <?php } ?>
 </tbody>  -->
 

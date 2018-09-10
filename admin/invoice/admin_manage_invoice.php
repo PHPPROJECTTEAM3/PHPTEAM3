@@ -32,18 +32,20 @@ $result = mysqli_query($link, $query);
      
     
 
-        <table border="2">
+            <center><table border="2" style="width: 98%">
             <tr>
-                <th style="width:5%">ID</th>
-                <th style="width:10%">Account</th>
-                <th style="width:6%">Total</th>
-                <th style="width:25%">Note</th>
-                <th style="width:10%">Date Order</th>
-                <th style="width:6%">Date Recive</th>
-                <th style="width:9%">Deposit</th>
-                <th style="width:8%">Status</th>
-                <th style="width:11%" colspan="3">....</th>
-            </tr><center></center>
+                <th >ID</th>
+                <th >Account</th>
+                <th >Total</th>
+                <th style="width: 30%">Note</th>
+                <th >Date Order</th>
+                <th >Estimate Date Recive</th>
+                <th >Deposit</th>
+                <th >Status</th>
+                <th >Admin Confirm</th>
+                <th >Date Receive</th>
+                <th  colspan="3">....</th>
+            </tr>
             <?php
             if (mysqli_num_rows($result) == 0) {
                 echo "<tr><td><h3>No Data</h3</td></tr>";
@@ -62,6 +64,8 @@ $result = mysqli_query($link, $query);
                  echo "<td><center>$row[5]</center></td>";
                  echo "<td><center>$row[6]</center></td>";
                  echo "<td><center>$row[7]</center></td>";
+                 echo "<td><center>$row[8]</center></td>";
+                 echo "<td><center>$row[9]</center></td>";
                  echo "<td><center><a href='admin_detail_invoice.php?id=$row[0]'>Detail</a></center></td>"; 
                 echo "<td><center><a href='admin_edit_Invoice.php?id=$row[0]'>Edit</a></center></td>"; 
                 echo "<td><center><a href='admin_delete_Invoice.php?id=$row[0]' onclick=\"javascript: return confirm('Are you sure?');\">Delete</a></center></td>";   
@@ -107,7 +111,7 @@ $result = mysqli_query($link, $query);
             exit();
             ?>
 
-        </table>
+                </table></center>
 
 
     </body>

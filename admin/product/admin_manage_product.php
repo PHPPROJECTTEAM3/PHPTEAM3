@@ -28,11 +28,12 @@ $result = mysqli_query($link, $query);
             <hr/>   
         <form>
             <p>
-                <input   name="manage_brand" type="submit" value="Manage Brand">
+                <input name="manage_brand" type="submit" value="Manage Brand">
                 <input style="margin-left: 50px" name="manage_version" type="submit" value="Manage Version">
                 <input style="margin-left: 50px" name="manage_invoice" type="submit" value="Manage Invoice">  
                 <input style="margin-left: 50px" name="manage_member" type="submit" value="Manage Member"> 
                 <input style="margin-left: 50px" name="manage_feedback" type="submit" value="Manage Feedback">  
+                 <input style="margin-left: 50px" name="manage_statistical" type="submit" value="Manage Statistical">  
             </p>
           
             <p><input name="add_pro" type="submit" value="Add Product"></p>
@@ -46,6 +47,12 @@ $result = mysqli_query($link, $query);
             if(isset($_GET["manage_member"]))
             {
                 header("location:../member/admin_manage_member.php");
+                  mysqli_close($link);
+                exit();
+            }
+            if(isset($_GET["manage_statistical"]))
+            {
+                header("location:../statistical/admin_manage_statistical.php");
                   mysqli_close($link);
                 exit();
             }
@@ -77,17 +84,17 @@ $result = mysqli_query($link, $query);
             ?>
         </form>
         
-        <table border='2'>
+    <center><table border='2' style="width: 95%">
             <tr>
-                <th style="width:4%">ID</th>
-                <th style="width:15%">Name</th>
-                <th style="width:8%">Brand</th>
-                <th style="width:15%">Image</th>
-                <th style="width:15%">Version</th>
-                <th style="width:7%">Price</th>
-                <th style="width:7%">Launch Date</th>
-                <th style="width:4%">Quantity Sold</th>
-                <th style="width:7%"colspan="2">....</th>
+                <th >ID</th>
+                <th >Name</th>
+                <th >Brand</th>
+                <th >Image</th>
+                <th >Version</th>
+                <th >Price</th>
+                <th >Launch Date</th>
+                <th >Quantity Sold</th>
+                <th colspan="2">....</th>
             </tr>
              <?php
         if (mysqli_num_rows($result) == 0) {
@@ -114,6 +121,6 @@ $result = mysqli_query($link, $query);
             mysqli_close($link);
             ?>
             
-        </table>
+        </table></center>
     </body>
 </html>
