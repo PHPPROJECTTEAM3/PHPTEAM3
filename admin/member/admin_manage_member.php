@@ -42,13 +42,14 @@ if($num == 0)
                 {
                     echo '<tr>';
                    echo"<td><center>$col[0]</center></td>";
-                   echo"<td><center>$col[0]</center></td>";
-                   echo"<td><center>$col[0]</center></td>";
-                   echo"<td><center>$col[0]</center></td>";
-                   echo"<td><center>$col[0]</center></td>";
-                   echo"<td><center>$col[0]</center></td>";
-                   echo"<td><center>$col[0]</center></td>";
-                   echo"<td><center>$col[0]</center></td>";    
+                   echo"<td><center>$col[1]</center></td>";
+                   echo"<td><center>$col[2]</center></td>";
+                   echo"<td><center>$col[3]</center></td>";
+                   echo"<td><center>$col[4]</center></td>";
+                   echo"<td><center>$col[5]</center></td>";
+                   echo"<td><center>$col[6]</center></td>";
+                   echo"<td><center>$col[7]</center></td>";    
+                   echo"<td><center>$col[8]</center></td>";    
                    echo"<td><center><a href='#'>Edit</a></center></td>";
                    echo"<td><center><a href='#'>Delete</a></center></td>";
                     echo '</tr>';

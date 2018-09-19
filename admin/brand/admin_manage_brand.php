@@ -14,8 +14,10 @@ $result = mysqli_query($link, $query);
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <link href="../blue/style2.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     </head>
-    <body>
+    <body class="margin5px">
 <h2>Brand List</h2>
              <div style="overflow: hidden">
                 <div style="float: left"> 
@@ -29,7 +31,7 @@ $result = mysqli_query($link, $query);
 
         <form
            
-            <p><input name="bt_add" type="submit" value="Add Brand"></p>
+            <p><input class="btn btn-info active" name="bt_add" type="submit" value="Add Brand"></p>
         </form>
 <?php
 if (isset($_GET["bt_add"])) {
@@ -38,12 +40,15 @@ if (isset($_GET["bt_add"])) {
     exit();
 }
 ?>
-        <center><table border="2">
+        <center><table id="myTable" class="tablesorter">
+                <thead>
             <tr>
                 <th style="width: 20%">Brand Name</th>
                 <th style="width: 20%">Logo</th>
                 <th style="width: 10%"colspan="2">....</th>
             </tr>
+                </thead>
+                <tbody>
 <?php
 if (mysqli_num_rows($result) == 0) {
     echo "<tr><td><h3>No Data</h3</td></tr>";
@@ -60,11 +65,14 @@ if (mysqli_num_rows($result) == 0) {
                 echo "<td><center><a href='admin_delete_brand.php?id=$row[0]'onclick=\"javascript: return confirm('Are you sure?');\">Delete</a></center></td>";
                 echo "</tr>";
             }
-            mysqli_close($link);
+            
             ?>
-
+                </tbody>
             </table></center>
 
-
+<?php 
+mysqli_close($link);
+exit();
+?>
     </body>
 </html>

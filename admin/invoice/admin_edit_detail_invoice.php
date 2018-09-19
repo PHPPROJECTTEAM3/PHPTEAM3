@@ -24,7 +24,9 @@ $query="SELECT `ID_Pro`,`Name_pro`,`Quantity_pro`,`price_pro` FROM `detail_invoi
 $result= mysqli_query($link, $query);
 $col = mysqli_fetch_array($result);
 ?>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="../blue/style2.css" rel="stylesheet" type="text/css"/>
+        <div class="margin5px">
 <h2>Edit Quantity Product In Invoice <?php echo $invoice ?></h2>
  <div style="overflow: hidden">
                 <div style="float: left"> 
@@ -39,7 +41,7 @@ $col = mysqli_fetch_array($result);
      <p>ID Product : <?php echo $col[0] ?></p>
      <p>Name Product : <?php echo $col[1] ?></p> 
     <p><input name="quantity_edit" type="number" value="<?php echo $col[2] ?>" required max="3" min="1"  ></p>
-    <input type="submit" name="bt_edit" value="Edit">   
+    <input type="submit" name="bt_edit" value="Edit" class="btn btn-success">   
     <input name="id_pro" type="hidden" value="<?php echo $col[0] ?>">
     <input name="price_pro" type="hidden" value="<?php echo $col[3] ?>">
 </form>
@@ -74,3 +76,4 @@ if(!isset($_GET["id"]))
 mysqli_close($link);
         exit();
  ?>
+        </div>

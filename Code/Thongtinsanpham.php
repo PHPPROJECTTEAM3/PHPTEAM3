@@ -1,14 +1,20 @@
+
+
 <?php
-if (!isset($_GET["ID"])) {
-    header("location:Home.php");
-    exit();
-}
+include_once '../PRJ_Library/data_product.inc';
+session_start();
 $pageTitle = "ThongTinSanPham";
 $activeMenu = "home";
 include_once '../PRJ_Library/header.php';
 ?>
 
+
+
 <?php
+if (!isset($_GET["ID"])) {
+   
+    exit();
+}
 $ID = $_GET["ID"];
 $query = "SELECT * FROM `product` WHERE ID = $ID";
 $result = mysqli_query($link, $query);

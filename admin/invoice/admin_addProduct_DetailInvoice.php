@@ -11,6 +11,9 @@ if (isset($_SESSION["invoice"])) {
     exit();
 }
 ?>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="../blue/style2.css" rel="stylesheet" type="text/css"/>
+        <div class="margin5px">
 <h2>Add Product to Detail Invoice : <?php echo $invoice; ?></h2>     
 <div style="overflow: hidden">
     <div style="float: left"> 
@@ -39,7 +42,7 @@ while ($col = mysqli_fetch_array($result)) {
 ?>
         </select></p>
         <p>Quantity: <input name="quantity_pro" type="number" max="3" min="1" value="1"></p>
-        <p><input name="bt_add" type="submit" value="Add"></p>
+        <p><input class="btn btn-success" name="bt_add" type="submit" value="Add"></p>
 </form>
             <?php
             if(isset($_GET["bt_add"]))
@@ -67,3 +70,4 @@ while ($col = mysqli_fetch_array($result)) {
            mysqli_close($link);
             exit();
             ?>
+</div>

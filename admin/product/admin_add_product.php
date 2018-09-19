@@ -37,8 +37,10 @@ if (mysqli_num_rows($result3) == 0) {
     <head>
         <meta charset="UTF-8">
         <title></title>
+         <link href="../blue/style2.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     </head>
-    <body>
+    <body class="margin5px">
         <h2>Add Product</h2>
         <hr/>
         <form>
@@ -70,7 +72,7 @@ if (mysqli_num_rows($result3) == 0) {
             <input name="a_s_pro" type="number" maxlength="3" value="0">
             <p>Launch Date</p>
             <input name="l_date_pro" type="date"><br/><br/>
-            <input name="bt_add" type="submit"> 
+            <input class="btn btn-success" name="bt_add" type="submit"> 
 
         </form>
 
@@ -95,6 +97,9 @@ if (mysqli_num_rows($result3) == 0) {
             }
         }
         ?>
+       
         <p><a href="admin_manage_product.php">Back to Manage Product</a></p>
+         <?php mysqli_close($link);
+         exit(); ?>
     </body>
 </html>

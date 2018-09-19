@@ -152,10 +152,10 @@ input::-webkit-search-cancel-button {
 
 
 /*input:-moz-placeholder {*/
-    /*color: #999;*/
+/*color: #999;*/
 /*}*/
 /*input::-webkit-input-placeholder {*/
-    /*color: #999;*/
+/*color: #999;*/
 /*}*/
 
 
@@ -238,6 +238,7 @@ input::-webkit-search-cancel-button {
 .search-form .form-group.hover {
     width: 100%;
     border-radius: 25px 25px 25px 25px;
+    
 }
 .search-form .form-group span.form-control-feedback {
     position: absolute;
@@ -293,12 +294,12 @@ input::-webkit-search-cancel-button {
 
 /* Slideshow container */
 .prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.8);
 }
 .slideshow-container {position:absolute;
-  position: relative;
-  margin: auto;
-  z-index: 1;
+                      position: relative;
+                      margin: auto;
+                      z-index: 1;
 }
 
 /* Hide the images by default */
@@ -320,12 +321,12 @@ input::-webkit-search-cancel-button {
     display: inline-block;
 }
 .dropdown a{
-text-decoration: none;
-color: white;
+    text-decoration: none;
+    color: white;
 }
 .dropdown a:hover{
-text-decoration: none;
-color: white;
+    text-decoration: none;
+    color: white;
 }
 
 .dropdown-content {
@@ -363,8 +364,8 @@ color: white;
 .search-box:hover > .search-txt{
     width:200px;
     height: 30px;
-   margin-top: -5%;
-   padding: 0 7px;
+    margin-top: -5%;
+    padding: 0 7px;
 }
 
 .search-btn {
@@ -414,23 +415,23 @@ color: white;
 }
 
 .overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  padding-top: 20px;
-  opacity: 0;
-  transition: .3s ease;
-  background: rgba(16, 82, 104, 0.8);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    padding-top: 20px;
+    opacity: 0;
+    transition: .3s ease;
+    background: rgba(16, 82, 104, 0.8);
 }
 .phone{
     position: relative;
 }
 .mobile:hover .overlay {
-  opacity: 1;
+    opacity: 1;
 }
 
 .detailsmb {
@@ -449,14 +450,14 @@ color: white;
     transition: all 0.3s ease 0s;
 }
 .detailsmb:hover{
-     text-decoration: none;
+    text-decoration: none;
 
     background: #110000;
 
     color: lightsteelblue;
 }
 .detailsmb i{
-        font-size: 15px;
+    font-size: 15px;
 
     font-weight: 700;
     padding-right: 5px;
@@ -466,7 +467,7 @@ color: white;
     color: white;
     transition: all 0.3s ease 0s;
     transform: scale(1.1); 
-     
+
 }
 
 .mobile > h5 {
@@ -565,95 +566,95 @@ color: white;
         border-radius: 0;
     }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .3s ease;
-  background: rgba(16, 82, 104, 0.8);
-}
-.detailsmb {
-    display: inline-block;
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: .3s ease;
+        background: rgba(16, 82, 104, 0.8);
+    }
+    .detailsmb {
+        display: inline-block;
 
-    padding: 10px 20px;
+        padding: 10px 20px;
 
-    background: #110000;
+        background: #110000;
 
-    font-size: 20px;
+        font-size: 20px;
 
-    font-weight: 700;
+        font-weight: 700;
 
-    color: #fff;
+        color: #fff;
 
-    transition: all 0.3s ease 0s;
-}
-.detailsmb i{
-    font-size: 15px;
-    font-weight: 700;
-    padding-right: 5px;
-}
-.slideqc{
-    margin-top: 13%;
-}
+        transition: all 0.3s ease 0s;
+    }
+    .detailsmb i{
+        font-size: 15px;
+        font-weight: 700;
+        padding-right: 5px;
+    }
+    .slideqc{
+        margin-top: 13%;
+    }
 }
 
 /*viewmobilegiohang*/
 @media screen and (max-width: 600px) { 
-.DetailsGioHang{
-    margin-top: 12%;
-}
-table#cart tbody td .form-control { 
-width:20%; 
-display: inline !important;
-} 
- 
-.actions .btn { 
-width:36%; 
-margin:1.5em 0;
-} 
- 
-.actions .btn-info { 
-float:left;
-} 
- 
-.actions .btn-danger { 
-float:right;
-} 
- 
-table#cart thead {
-display: none;
-} 
- 
-table#cart tbody td {
-display: block;
-padding: .6rem;
-min-width:320px;
-} 
- 
-table#cart tbody tr td:first-child {
-background: #333;
-color: #fff;
-} 
- 
-table#cart tbody td:before { 
-content: attr(data-th);
-font-weight: bold; 
-display: inline-block;
-width: 8rem;
-} 
- 
-table#cart tfoot td {
-display:block;
-} 
-table#cart tfoot td .btn {
- 
-display:block;
-}
+    .DetailsGioHang{
+        margin-top: 12%;
+    }
+    table#cart tbody td .form-control { 
+        width:20%; 
+        display: inline !important;
+    } 
+
+    .actions .btn { 
+        width:36%; 
+        margin:1.5em 0;
+    } 
+
+    .actions .btn-info { 
+        float:left;
+    } 
+
+    .actions .btn-danger { 
+        float:right;
+    } 
+
+    table#cart thead {
+        display: none;
+    } 
+
+    table#cart tbody td {
+        display: block;
+        padding: .6rem;
+        min-width:320px;
+    } 
+
+    table#cart tbody tr td:first-child {
+        background: #333;
+        color: #fff;
+    } 
+
+    table#cart tbody td:before { 
+        content: attr(data-th);
+        font-weight: bold; 
+        display: inline-block;
+        width: 8rem;
+    } 
+
+    table#cart tfoot td {
+        display:block;
+    } 
+    table#cart tfoot td .btn {
+
+        display:block;
+    }
 }
 
 @media only screen and (max-width: 990px) {
@@ -667,12 +668,12 @@ display:block;
 
 /*.typeahead { 
     border: 2px solid #FFF;border-radius: 4px;padding: 8px 12px;max-width: 300px;min-width: 0px;background: rgba(66, 52, 52, 0.5);color: #000;}
-	
-	ul.typeahead{margin:0px;padding:10px 0px;}
-	ul.typeahead.dropdown-menu li a {padding: 10px !important;	border-bottom:#CCC 1px solid;color:#000;}
-	ul.typeahead.dropdown-menu li:last-child a { border-bottom:0px !important; }
-	.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
-		text-decoration: none;
-		background-color: #1f3f41;
-		outline: 0;
-	}*/
+        
+        ul.typeahead{margin:0px;padding:10px 0px;}
+        ul.typeahead.dropdown-menu li a {padding: 10px !important;	border-bottom:#CCC 1px solid;color:#000;}
+        ul.typeahead.dropdown-menu li:last-child a { border-bottom:0px !important; }
+        .dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
+                text-decoration: none;
+                background-color: #1f3f41;
+                outline: 0;
+        }*/

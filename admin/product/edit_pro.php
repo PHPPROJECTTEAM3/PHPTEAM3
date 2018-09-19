@@ -36,8 +36,8 @@ if (!(isset($_SESSION["admin"]) && isset($_SESSION["role"]))) {
                 die("Edit Faile !!!!");
             }
             header("location:admin_manage_product.php");
-            exit();
             mysqli_close($link);
+             exit();
             
         }
         ?>

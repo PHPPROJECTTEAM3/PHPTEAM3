@@ -33,11 +33,22 @@ $current_id = $row[0];
     <head>
         <meta charset="UTF-8">
         <title></title>
+         <link href="../blue/style2.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     </head>
-    <body>
-        
+    <body class="margin5px">
         <h2>Edit Product ID: <?php echo $id ?></h2>
-        <hr/>
+<div style="overflow: hidden">
+    <div style="float: left"> 
+        <a href="admin_manage_product.php" style="text-decoration: none" >Back to Manage Product</a>
+    </div>
+    <div style="float: right; margin-right: 20px">
+        <a href="../admin_log_out.php" style="text-decoration: none;">Log Out</a>
+    </div> 
+</div>
+<hr/>   
+        
+        
         <form method="GET" action="edit_pro.php">
             <input type="hidden" name="current_ID" value="<?php echo $current_id ?>" readonly="">
             <p>ID</p>
@@ -73,7 +84,7 @@ $current_id = $row[0];
             <input name="a_s_pro" type="number" maxlength="3" value="<?php echo $row[6] ?>">
             <p>Launch Date</p>
             <input name="l_date_pro" type="date" value="<?php echo $row[7]?>"><br/><br/>
-            <input name="edit_pro" type="submit" value="Edit"> 
+            <input class="btn btn-success" name="edit_pro" type="submit" value="Edit"> 
 
         </form>
        

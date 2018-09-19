@@ -20,8 +20,10 @@ $row = mysqli_fetch_array($result);
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+          <link href="../blue/style2.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
+    <body class="margin5px">
       
         <h2>Edit Brand</h2>
              <div style="overflow: hidden">
@@ -42,8 +44,11 @@ $row = mysqli_fetch_array($result);
             
             <p>---Current Logo <img src="<?php echo "../../Images/Brand/$row[1]" ?>" width=300px height=200px> <input name="current_image" type="hidden" value="<?php echo $row[1]?>">
             <p>---New Logo <input name="new_logo" type="file"> <!--Có Thể Để Trống -->
-            <p><input name="bt_edit" type="submit" value="Edit">
+            <p><input class="btn btn-success" name="bt_edit" type="submit" value="Edit">
         </form>
-        
+        <?php 
+mysqli_close($link);
+exit();
+?>
     </body>
 </html>

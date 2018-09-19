@@ -11,6 +11,7 @@ $id = $_GET["id"];
 $result = mysqli_query($link, $query);
         mysqli_close($link);
         header("location:admin_manage_brand.php");
-        
+        mysqli_close($link);
+exit();
         ?>
 
